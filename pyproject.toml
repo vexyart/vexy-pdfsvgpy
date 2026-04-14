@@ -1,0 +1,62 @@
+[project]
+name = "vexy-pdfsvgpy"
+dynamic = ["version"]
+description = "Unified PDF/SVG/PNG conversion with zero system-library dependencies"
+license = { file = "LICENSE" }
+authors = [{ name = "Adam Twardoch" }]
+requires-python = ">=3.12"
+dependencies = [
+    "pymupdf",
+    "pypdfium2",
+    "pypdf",
+    "pikepdf",
+    "resvg-py",
+    "vtracer",
+    "Pillow",
+    "lxml",
+    "fire",
+    "loguru",
+    "rich",
+    "pyobjc-framework-Quartz; sys_platform == 'darwin'",
+    "pyobjc-framework-Cocoa; sys_platform == 'darwin'",
+]
+
+[project.scripts]
+vexy-pdfsvgpy = "vexy_pdfsvgpy.cli:main"
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+fallback-version = "0.0.0"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/vexy_pdfsvgpy/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vexy_pdfsvgpy"]
+
+[tool.hatch.envs.default]
+dependencies = ["pytest", "pytest-cov", "mypy", "ruff"]
+
+[tool.hatch.envs.hatch-test]
+extra-dependencies = ["pytest", "pytest-cov"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF", "N", "PL"]
+ignore = ["PLR0913", "PLR2004"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/vexy_pdfsvgpy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
