@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 # this_file: src/vexy_pdfsvgpy/cli.py
 """Fire CLI for vexy-pdfsvgpy."""
 
@@ -9,7 +10,8 @@ from loguru import logger
 from rich.console import Console
 from rich.table import Table
 
-from . import __version__, convert as _convert
+from . import __version__
+from . import convert as _convert
 from .errors import VexyError
 
 
@@ -28,6 +30,12 @@ class CLI:
         input: str | None = None,
         output: str | None = None,
         *,
+        vinput: str | None = None,
+        voutput: str | None = None,
+        binput: str | None = None,
+        boutput: str | None = None,
+        recursive: bool = False,
+        glob: str | None = None,
         hint: str | None = None,
         regularize: bool = False,
         dim: str | None = None,
@@ -45,7 +53,7 @@ class CLI:
         backdrop: str | None = None,
         verbose: bool = False,
     ) -> int:
-        """Convert one file to another format. Format inferred from extension."""
+        """Convert one file to another format. Format inferred from extension or specified via --vinput/--binput/--voutput/--boutput."""
         self._configure_logging(verbose)
         if input is None or output is None:
             self._console.print("[red]Error:[/red] --input and --output are required")
@@ -54,6 +62,8 @@ class CLI:
         # passing unsupported kwargs to backends that don't accept them.
         options: dict[str, Any] = {}
         for key, val in {
+            "recursive": recursive,
+            "glob": glob,
             "regularize": regularize,
             "dim": dim,
             "scale": scale,
@@ -75,6 +85,10 @@ class CLI:
             out_path = _convert(
                 input=input,
                 output=output,
+                vinput=vinput,
+                voutput=voutput,
+                binput=binput,
+                boutput=boutput,
                 hints=hint,
                 **options,
             )
@@ -90,27 +104,36 @@ class CLI:
         """Shortcut: `convert --regularize`."""
         return self.convert(input=input, output=output, hint=hint, regularize=True, verbose=verbose)
 
-    def split(self, input: str, out_dir: str, *, verbose: bool = False) -> int:
+    def split(self, input: str, out_dir: str | None = None, *, verbose: bool = False) -> int:
         """Split a multi-page PDF into one file per page."""
         self._configure_logging(verbose)
         try:
             from .operations import reshape
-            pages = reshape.pages2docs_pdf(Path(input), Path(out_dir))
+
+            in_path = Path(input)
+            out_path = Path(out_dir) if out_dir else in_path.parent
+            pages = reshape.pages2docs_pdf(in_path, out_path)
             self._console.print(
-                f"[green]Split {input} into {len(pages)} page(s) in {out_dir}[/green]"
+                f"[green]Split {input} into {len(pages)} page(s) in {out_path}[/green]"
             )
             return 0
         except Exception as e:
             self._console.print(f"[red]Error:[/red] {e}")
             return 1
 
-    def merge(self, inputs: str, output: str, *, verbose: bool = False) -> int:
+    def merge(self, inputs: str, output: str | None = None, *, verbose: bool = False) -> int:
         """Merge multiple PDFs (comma-separated paths) into one."""
         self._configure_logging(verbose)
         try:
             from .operations import reshape
+
             srcs = [Path(p.strip()) for p in inputs.split(",") if p.strip()]
-            out = reshape.docs2pages_pdf(srcs, Path(output))
+            if not srcs:
+                raise ValueError("No input files provided")
+
+            out_path = Path(output) if output else srcs[0].parent / f"{srcs[0].stem}-merged.pdf"
+
+            out = reshape.docs2pages_pdf(srcs, out_path)
             self._console.print(f"[green]Merged {len(srcs)} file(s) into {out}[/green]")
             return 0
         except Exception as e:
@@ -134,7 +157,9 @@ class CLI:
 
 def main() -> None:
     import sys
+
     import fire
+
     # Fire prints the return value but always exits 0; use sys.exit to propagate
     # integer return codes from subcommands.
     result = fire.Fire(CLI)
