@@ -40,6 +40,8 @@ class Hint(StrEnum):
     MU = "mu"  # prefer pymupdf
     PK = "pk"  # prefer pikepdf
     AP = "ap"  # prefer Apple PDFKit / Quartz (macOS only)
+    CA = "ca"  # prefer Cairo
+    GS = "gs"  # prefer Ghostscript
 
 
 # ---------------------------------------------------------------------------

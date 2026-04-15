@@ -107,6 +107,22 @@ def _load_table() -> dict[Capability, tuple[BackendFn, ...]]:
     except ImportError:
         pass
 
+    # cairo - optional backend for CA hint
+    try:
+        from .backends import cairo_backend as c
+        table[Capability.SVG_TO_PNG].append(BackendFn("cairo", Hint.CA, c.svg_to_png))
+        table[Capability.SVG_TO_PDF].append(BackendFn("cairo", Hint.CA, c.svg_to_pdf))
+    except ImportError:
+        pass
+
+    # ghostscript - optional backend for GS hint
+    try:
+        from .backends import ghostscript_backend as gs
+        table[Capability.PDF_TO_PNG].append(BackendFn("ghostscript", Hint.GS, gs.pdf_to_png))
+        table[Capability.PDF_NORMALIZE].append(BackendFn("ghostscript", Hint.GS, gs.pdf_normalize))
+    except ImportError:
+        pass
+
     return {c: tuple(v) for c, v in table.items()}
 
 

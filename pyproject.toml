@@ -21,6 +21,18 @@ dependencies = [
     "pyobjc-framework-Cocoa; sys_platform == 'darwin'",
 ]
 
+[project.optional-dependencies]
+cairo = [
+    "CairoSVG",
+]
+ghostscript = [
+    "ghostscript",
+]
+all = [
+    "vexy-pdfsvgpy[cairo]",
+    "vexy-pdfsvgpy[ghostscript]",
+]
+
 [project.scripts]
 vexy-pdfsvgpy = "vexy_pdfsvgpy.cli:main"
 
