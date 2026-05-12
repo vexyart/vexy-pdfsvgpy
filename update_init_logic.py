@@ -1,30 +1,11 @@
-# this_file: src/vexy_pdfsvgpy/__init__.py
-"""vexy_pdfsvgpy — unified PDF/SVG/PNG conversion."""
+import re
 
-from __future__ import annotations
+with open('src/vexy_pdfsvgpy/__init__.py', 'r') as f:
+    content = f.read()
 
-from pathlib import Path
-from typing import Any
-
-try:
-    from ._version import version as __version__  # type: ignore[import-not-found]
-except ImportError:
-    __version__ = "0.0.0+unknown"
-
-from .dispatch import Capability
-from .document import Document, Page
-from .errors import (
-    BackendFailure,
-    InvalidInput,
-    UnsupportedConversion,
-    UnsupportedOnPlatform,
-    VexyError,
-)
-from .pipeline import Step, execute, plan
-from .types import Content, FormatSpec, Hint, Hints, Packaging
-
-
-def _gather_inputs(src: Path, fmt: str, pkg: Packaging, recursive: bool, glob_pat: str | None) -> list[Path]:
+# Replace convert
+convert_regex = r"def convert\(.*?return execute\(steps, src, dst\)"
+convert_new = """def _gather_inputs(src: Path, fmt: str, pkg: Packaging, recursive: bool, glob_pat: str | None) -> list[Path]:
     if pkg != Packaging.D:
         if src.is_dir():
             raise InvalidInput(f"Input is a directory but format packaging is {pkg.value} (expected 'd')")
@@ -76,11 +57,11 @@ def convert(
     hints: str | Hints | None = None,
     **options: Any,
 ) -> Path | list[Path]:
-    """High-level conversion entry point.
+    \"\"\"High-level conversion entry point.
 
     Resolves FormatSpecs from file extensions, plans the pipeline, and
     executes it. Returns the output path.
-    """
+    \"\"\"
     if input is None or output is None:
         raise InvalidInput("convert() requires both 'input' and 'output'")
     src = Path(input)
@@ -143,26 +124,9 @@ def convert(
     else:
         # TODO: docs2pages (m) or docs2layers (l)
         # We would convert each file to a temporary vector format, then merge them
-        raise NotImplementedError(f"Combining multiple inputs into {output_spec.packaging.value} is not fully implemented yet")
+        raise NotImplementedError(f"Combining multiple inputs into {output_spec.packaging.value} is not fully implemented yet")"""
 
+content = re.sub(convert_regex, convert_new, content, flags=re.DOTALL)
 
-__all__ = [
-    "BackendFailure",
-    "Capability",
-    "Content",
-    "Document",
-    "FormatSpec",
-    "Hint",
-    "Hints",
-    "InvalidInput",
-    "Packaging",
-    "Page",
-    "Step",
-    "UnsupportedConversion",
-    "UnsupportedOnPlatform",
-    "VexyError",
-    "__version__",
-    "convert",
-    "execute",
-    "plan",
-]
+with open('src/vexy_pdfsvgpy/__init__.py', 'w') as f:
+    f.write(content)

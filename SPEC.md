@@ -85,7 +85,7 @@ A format spec is `{format}-{packaging}{content}`.
 | `t`  | text, with embedded fonts if possible | attempt to preserve, best-effort |
 | `b`  | bitmap-only                      | rasterize then wrap as image |
 
-Either qualifier may be omitted when equal to the default. `pdf-mo` = multi-page PDF with outlines (the typical case). `svg-lt` = layered SVG with preserved text. `png` alone = `png-d`.
+Either qualifier may be omitted when equal to the default. `pdf_mo` = multi-page PDF with outlines (the typical case). `svg_lt` = layered SVG with preserved text. `png` alone = `png_d`.
 
 **Roles (CLI flags):**
 
@@ -122,7 +122,7 @@ Dispatch rule: find the first backend in the capability table whose key appears 
 
 Happens automatically when input and output packaging differ:
 
-- `pages2docs` — multi-page input (`pdf-m`) → collection of docs. PDF: `pypdf.PdfWriter().add_page(p)` per page, or `pikepdf.Pdf.new(); one.pages.append(page)`.
+- `pages2docs` — multi-page input (`pdf_m`) → collection of docs. PDF: `pypdf.PdfWriter().add_page(p)` per page, or `pikepdf.Pdf.new(); one.pages.append(page)`.
 - `docs2pages` — collection → multi-page PDF. `pikepdf.Pdf.new(); merged.pages.extend(...)` (lossless) or `pypdf.PdfWriter()` (pure-Python).
 - `layers2docs` — layered PDF: toggle each OCG via `set_layer_ui_config` and re-render per layer. Layered SVG: parse with `lxml`, split on `<g inkscape:groupmode="layer">`. APNG → one doc per frame.
 - `docs2layers` — PDF output: `pymupdf.add_ocg()` + `page.show_pdf_page(..., oc=ocg_xref)` stacking onto one page. SVG output: build a parent `<svg>` and wrap each doc's children in `<g id="layerN" inkscape:groupmode="layer" inkscape:label="...">`.
@@ -209,7 +209,7 @@ cli.py               — Fire CLI entry point
 
 **Design rules** (from `CLAUDE.md`):
 
-1. **Parse, don't validate at the boundary.** `FormatSpec.parse("pdf-mo")` returns a typed object; internals only accept typed objects.
+1. **Parse, don't validate at the boundary.** `FormatSpec.parse("pdf_mo")` returns a typed object; internals only accept typed objects.
 2. **One engine per capability.** `dispatch.resolve(cap, hints)` returns exactly one `Backend`. No ambiguity in inner code.
 3. **Errors as data at the API boundary.** Narrow exceptions: `UnsupportedConversion`, `BackendFailure`, `InvalidInput`. Never leak `fitz.FileDataError` or `pikepdf.PdfError` to callers.
 4. **Intermediate `Document` type.** Every conversion is `Input → Document → Output`. `Document` holds typed pages as either PDF bytes, SVG strings, or bitmap tensors (Pillow `Image`), plus per-page metadata (dimensions, origin, layer name). Backends consume and produce `Document`s.
@@ -256,7 +256,7 @@ convert(
 )
 
 # API primitives
-spec = FormatSpec.parse("pdf-mo")
+spec = FormatSpec.parse("pdf_mo")
 doc = Document.load("in.pdf")
 doc = regularize(doc, hints=Hints(("mu",)))
 doc.save("out.pdf", spec=spec)

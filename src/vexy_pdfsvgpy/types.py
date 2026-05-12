@@ -55,7 +55,7 @@ _VALID_CONTENT: dict[str, Content] = {c.value: c for c in Content}
 
 @dataclass(frozen=True, slots=True)
 class FormatSpec:
-    """Parsed representation of a format qualifier string like ``pdf-mo``."""
+    """Parsed representation of a format qualifier string like ``pdf_mo``."""
 
     format: Format
     packaging: Packaging = Packaging.D
@@ -92,14 +92,14 @@ class FormatSpec:
     def parse(cls, s: str) -> FormatSpec:
         """Parse a format qualifier string into a FormatSpec.
 
-        Accepts: ``"pdf"``, ``"pdf-m"``, ``"pdf-mo"``, ``"svg-lt"``,
-        ``"png"``, ``"png-l"``, ``"jpg"``, etc.
+        Accepts: ``"pdf"``, ``"pdf_m"``, ``"pdf_mo"``, ``"svg_lt"``,
+        ``"png"``, ``"png_l"``, ``"jpg"``, etc.
         Raises :exc:`InvalidInput` on malformed input.
         """
         if not s:
             raise InvalidInput("Empty format spec string")
 
-        parts = s.split("-", 1)
+        parts = s.split("_", 1)
         fmt_str = parts[0].lower()
 
         if fmt_str not in _VALID_FORMATS:
@@ -183,12 +183,12 @@ class FormatSpec:
             if pkg == Packaging.D and cnt == Content.O:
                 return fmt
             cnt_str = cnt.value if cnt is not None else ""
-            return f"{fmt}-{pkg.value}{cnt_str}"
+            return f"{fmt}_{pkg.value}{cnt_str}"
         else:
             # Bitmap: default is just packaging=D (no content)
             if pkg == Packaging.D:
                 return fmt
-            return f"{fmt}-{pkg.value}"
+            return f"{fmt}_{pkg.value}"
 
     # ------------------------------------------------------------------
     # Properties

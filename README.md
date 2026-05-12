@@ -59,7 +59,7 @@ Format specs follow `{format}-{packaging}{content}`. Either qualifier can be omi
 | Packaging (bitmap) | `d` (default), `l` | collection / layered (APNG) |
 | Content (vector) | `o` (default), `t`, `b` | outlines / text / bitmap-only |
 
-Examples: `pdf-mo` = multi-page PDF with outline text. `svg-lt` = layered SVG with preserved text. `png` = `png-d`.
+Examples: `pdf_mo` = multi-page PDF with outline text. `svg_lt` = layered SVG with preserved text. `png` = `png_d`.
 
 **Note:** PDF → SVG is inherently lossy. Text is converted to paths (`text_as_path=True`). Semantic fidelity is not guaranteed.
 

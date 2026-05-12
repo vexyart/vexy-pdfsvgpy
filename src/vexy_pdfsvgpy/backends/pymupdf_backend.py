@@ -42,25 +42,14 @@ def pdf_to_svg(src: Path, dst: Path, *, page: int = 0, text_as: str | None = Non
     _ensure_parent(dst)
     doc = _open(src, "pdf_to_svg")
     try:
-        # According to issue #102:
-        # "text": preserve text (text_as_path=False)
-        # "paths": always convert to paths (text_as_path=True)
-        # "fonts": default (text_as_path=False)
-        # Wait, for pymupdf, getting text requires text_as_path=False.
-        # But wait, original code was text_as_path=True.
-        # So "paths" -> text_as_path=True
-        # "text" -> text_as_path=False
-        # "fonts" -> text_as_path=False (pymupdf might handle embedded fonts depending on what gets serialized)
-        
-        # We will map it this way:
-        is_text_as_path = True
-        if text_as == "text":
-            is_text_as_path = False
-        elif text_as == "fonts":
-            is_text_as_path = False
-        elif text_as == "paths":
-            is_text_as_path = True
-            
+        # Per issue 106:
+        #   text_as="text"  -> semantic preservation (keep text, no font embed concern)
+        #   text_as="paths" -> visual preservation (always convert to paths)
+        #   text_as="fonts" -> balanced; preserve fonts if possible, else paths (default)
+        # pymupdf's get_svg_image only has text_as_path (bool). Both "text" and
+        # "fonts" map to text_as_path=False (pymupdf emits <text> referencing fonts
+        # and renderers fall back automatically when fonts are unavailable).
+        is_text_as_path = text_as == "paths"
         svg = doc[page].get_svg_image(text_as_path=is_text_as_path)
         dst.write_text(svg, encoding="utf-8")
     except RuntimeError:
@@ -124,14 +113,7 @@ def svg_normalize(src: Path, dst: Path, *, page: int = 0, text_as: str | None = 
     _ensure_parent(dst)
     doc = _open(src, "svg_normalize")
     try:
-        is_text_as_path = True
-        if text_as == "text":
-            is_text_as_path = False
-        elif text_as == "fonts":
-            is_text_as_path = False
-        elif text_as == "paths":
-            is_text_as_path = True
-            
+        is_text_as_path = text_as == "paths"
         svg = doc[page].get_svg_image(text_as_path=is_text_as_path)
         dst.write_text(svg, encoding="utf-8")
     except RuntimeError:

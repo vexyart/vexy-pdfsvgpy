@@ -1,0 +1,538 @@
+{
+  "schema_version": 1,
+  "scanned_at": "2026-04-15T10:45:04.336Z",
+  "files": [
+    {
+      "path": ".pytest_cache/README.md",
+      "title": "pytest cache directory #",
+      "summary": "This directory contains data from the pytest's cache plugin, which provides the `--lf` and `--ff` options, as well as the `cache` fixture. **Do not** commit this to version control. See [the docs](...",
+      "lines": 9,
+      "mtime": 1776169985199
+    },
+    {
+      "path": ".venv/lib/python3.12/site-packages/fire/console/README.md",
+      "title": "README.md",
+      "summary": "This is the console package from googlecloudsdk, as used by Python Fire. Python Fire does not accept pull requests modifying the console package; rather, changes to console should go through the up...",
+      "lines": 4,
+      "mtime": 1775315313474
+    },
+    {
+      "path": ".venv/lib/python3.12/site-packages/pymupdf-1.27.2.2.dist-info/README.md",
+      "title": "PyMuPDF",
+      "summary": "**PyMuPDF** is a high performance **Python** library for data extraction, analysis, conversion & manipulation of [PDF (and other) documents](https://pymupdf.readthedocs.io/en/latest/the-basics.html...",
+      "lines": 61,
+      "mtime": 1776113757141
+    },
+    {
+      "path": ".venv/lib/python3.12/site-packages/vtracer/README.md",
+      "title": "README.md",
+      "summary": "<div align=\"center\"> <img src=\"https://github.com/visioncortex/vtracer/raw/master/docs/images/visioncortex-banner.png\"> <h1>VTracer: Python Binding</h1> <p> <strong>Raster to Vector Graphics Conver...",
+      "lines": 86,
+      "mtime": 1776117246302
+    },
+    {
+      "path": "CHANGELOG.md",
+      "title": "Changelog",
+      "summary": "--- this_file: CHANGELOG.md --- - Bootstrap (`pyproject.toml`, package skeleton, smoke test). - Format grammar (`FormatSpec`, `Packaging`, `Content`, `Hint`, `Hints`) with round-trip parser. - Erro...",
+      "lines": 30,
+      "mtime": 1776180858293
+    },
+    {
+      "path": "CLAUDE.md",
+      "title": "CLAUDE.md",
+      "summary": "This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. Greenfield. `src/vexy_pdfsvgpy/`, `tests/`, and `examples/` exist but are empty. No `pyproject...",
+      "lines": 89,
+      "mtime": 1776180858293
+    },
+    {
+      "path": "external/mupdf/platform/wasm/examples/simple-viewer/README.md",
+      "title": "Simple Viewer",
+      "summary": "This project contains a simple demo of a PDF viewer using the MuPDF.js Library. This viewer uses a Worker background thread to do the heavy lifting, and inserts rendered images and text in the DOM ...",
+      "lines": 13,
+      "mtime": 1776159018856
+    },
+    {
+      "path": "external/mupdf/platform/wasm/examples/super-simple-viewer/README.md",
+      "title": "Super Simple viewer",
+      "summary": "This is an extremely simple example of using the MuPDF.js module from a web browser. The page rendering runs directly on the main thread, so this viewer may cause your browser to slow down while it...",
+      "lines": 15,
+      "mtime": 1776159018857
+    },
+    {
+      "path": "external/mupdf/platform/wasm/README.md",
+      "title": "MuPDF.js",
+      "summary": "Welcome to the official MuPDF.js library from [Artifex](https://artifex.com). Use [MuPDF](https://mupdf.com) in your JavaScript and TypeScript projects! This library is powered by WebAssembly and c...",
+      "lines": 47,
+      "mtime": 1776159018856
+    },
+    {
+      "path": "external/picosvgx/README.md",
+      "title": "picosvgx",
+      "summary": "An extended fork of Google's picosvg with better real-world SVG compatibility. picosvg is excellent for font/icon toolchains — it simplifies SVG files down to paths and gradients. But real-world SV...",
+      "lines": 88,
+      "mtime": 1776171093698
+    },
+    {
+      "path": "external/pikepdf/README.md",
+      "title": "pikepdf",
+      "summary": "<!-- SPDX-FileCopyrightText: 2022 James R. Barlow --> <!-- SPDX-License-Identifier: MPL-2.0 --> **Read, write, repair, and transform PDFs in Python -- powered by qpdf.** [![Build Status](https://gi...",
+      "lines": 215,
+      "mtime": 1776113100731
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/advanced-toc/README.md",
+      "title": "Handling of Table of Contents",
+      "summary": "Tables of Content - TOC - can be created for any PyMuPDF document type by method `doc.get_toc(simple: bool = True/False)` - the old name `getTOC` is deprecated and kept as an alias. The method retu...",
+      "lines": 198,
+      "mtime": 1776158948102
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/animations/README.md",
+      "title": "README.md",
+      "summary": "This folder contains a few scripts which may best be characterized as \"fun\" or \"entertainment\" ... using PyMuPDF of course. They all work following the same basic approach: 1. Draw or write somethi...",
+      "lines": 17,
+      "mtime": 1776158948103
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/cloud-interactions/README.md",
+      "title": "README.md",
+      "summary": "This is a set of code snippets showing how to download or upload to cloud services offered by major providers. The focus of the scripts is to demonstrate, how using intermediate disk storage can be...",
+      "lines": 6,
+      "mtime": 1776158948104
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/conversion/README.md",
+      "title": "README.md",
+      "summary": "This folder contains scripts for document conversions. Over time, more examples will be added. Currently there are: * `make-cbz.py` - convert any document to a Comic Book * `make-imagepdf.py` - con...",
+      "lines": 12,
+      "mtime": 1776158948104
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/examples/edit-images/README.md",
+      "title": "Editing Images in a PDF Page",
+      "summary": "This is a GUI script written in wxPython to edit the images shown by a PDF page. * Detect images used by a page and display basic information: image reference name, location on the page (\"bbox\" - b...",
+      "lines": 75,
+      "mtime": 1776158948152
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/examples/extract-table/README.md",
+      "title": "README.md",
+      "summary": "`ParseTab` is used to parse the table data contained in a specified rectangle. ``` table = ParseTab(doc, page, rect, columns=None) ``` - `doc` if required, it must be a PyMuPDF document created by ...",
+      "lines": 95,
+      "mtime": 1776158948189
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/examples/filmfestival-2tables/README.md",
+      "title": "Example for PyMuPDF Reporting",
+      "summary": "This script creates a report about a fictitious film festival. It extracts data from an SQL database (sqlite3). The database contains two tables: * films * actors The **_films_** table has columns ...",
+      "lines": 21,
+      "mtime": 1776158948193
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/examples/README.md",
+      "title": "PyMuPDF Examples",
+      "summary": "As a rule of thumb, subfolders are named `<action-object>` as if pointing out an action to be performed on an object or set of objects, e.g. `attach-images`. Python scripts are named `<action.py>`,...",
+      "lines": 76,
+      "mtime": 1776158948105
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/examples/replace-image/README.md",
+      "title": "Replacing an Image in a PDF",
+      "summary": "---------- > Note: The features described here are now (version 1.21.1) **_official methods_** of PyMuPDF's `Page` class, please consult the documentation [here](https://pymupdf.readthedocs.io/en/l...",
+      "lines": 50,
+      "mtime": 1776158948233
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/jupyter-notebooks/README.md",
+      "title": "PyMuPDF JUPYTER Notebooks",
+      "summary": "These are scripts that explain basic usage of PyMuPDF using jupyter notebook features. Just click on one of the `.ipynb` files to see its fully rendered session! Over time this script collection wi...",
+      "lines": 22,
+      "mtime": 1776158948291
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/OCR/README.md",
+      "title": "Demo Scripts using PyMuPDF with OCR",
+      "summary": "Starting with its version 1.18.0, MuPDF supports dynamically invoking Tesseract OCR to interpret text on pages or images. With its version 1.19.0, PyMuPDF has started supporting this interface. The...",
+      "lines": 49,
+      "mtime": 1776158948101
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/pdf-names-resolution/README.md",
+      "title": "Under Construction",
+      "summary": "This contains two demo script currently, which examine the PDF catalog and resolve named destinations to pages. We intend to make this available as a fitz.Document method. Currently, invoke like this:",
+      "lines": 35,
+      "mtime": 1776158948296
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/README.md",
+      "title": "PyMuPDF-Utilities",
+      "summary": "This repository contains demos and examples to help you create PDF, XPS, and eBook applications with PyMuPDF. Some examples were initially created in the early days of the package. API changes impl...",
+      "lines": 50,
+      "mtime": 1776158948102
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/reporting/examples/filmfestival-2tables/README.md",
+      "title": "Example for PyMuPDF Reporting",
+      "summary": "This script creates a report about a fictitious film festival. It extracts data from an SQL database (sqlite3). The database contains two tables: * **films** - columns: **title**, **director**, **y...",
+      "lines": 20,
+      "mtime": 1776158948296
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/reporting/examples/invoice/README.md",
+      "title": "Example for PyMuPDF Reporting",
+      "summary": "This script creates an invoice with a layout involving fairly complex HTML definitions. The single invoice items are contained in an SQL database (sqlite). Points of interest: * Company logo top-le...",
+      "lines": 15,
+      "mtime": 1776158948297
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/reporting/examples/multi-format/README.md",
+      "title": "Example for PyMuPDF Reporting",
+      "summary": "This script creates a list of capital cities of the world. It extracts data from a CSV file. Notes of interest: * Table printed in 2 columns per page * Alternating row background colors * Using use...",
+      "lines": 11,
+      "mtime": 1776158948297
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/reporting/examples/row-with-images/README.md",
+      "title": "Example for PyMuPDF Reporting",
+      "summary": "This script creates a table from items in a CSV file. Notes of interest: * Table rows contain images that are stored in a ZIP file. The report generator \"understands\" field text that is prefixed wi...",
+      "lines": 8,
+      "mtime": 1776158948298
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/reporting/examples/simple-article/README.md",
+      "title": "Example for PyMuPDF Reporting",
+      "summary": "This script creates a simple text article in 10 lines of code. The article text is provided as HTML. Notes of interest: * Text is printed in 2 columns per page. * An image is automatically embedded...",
+      "lines": 11,
+      "mtime": 1776158948298
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/reporting/examples/user-fonts/README.md",
+      "title": "Example for PyMuPDF Reporting: Using User Fonts",
+      "summary": "This script is a duplicate of another example in this folder: please see the [Film Festival](https://github.com/pymupdf/PyMuPDF-Utilities/tree/master/reporting/examples/filmfestival-2tables) script...",
+      "lines": 38,
+      "mtime": 1776158948301
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/reporting/README.md",
+      "title": "PyMuPDF Reporting",
+      "summary": "This folder provides examples for using PyMuPDF's reporting feature. Each example is contained in a sub-folder of `examples`, usually the script together with all necessary data to use it. The name...",
+      "lines": 9,
+      "mtime": 1776158948296
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/table-analysis/README.md",
+      "title": "README.md",
+      "summary": "Starting with its version 1.23.0, PyMuPDF offers complete integrated support for identifying tables on document pages and extracting their content. Just use the new [Page](https://pymupdf.readthedo...",
+      "lines": 13,
+      "mtime": 1776158948304
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/text-documents/README.md",
+      "title": "\"TXT\" Document Support",
+      "summary": "PyMuPDF supports files in plain text formats as a `Document`. They can be opened as usual, text can be extracted and searched for, and pages can be rendered as Pixmaps and more. You can use it for ...",
+      "lines": 49,
+      "mtime": 1776158948308
+    },
+    {
+      "path": "external/PyMuPDF-Utilities/text-extraction/README.md",
+      "title": "General Text Extraction",
+      "summary": "This folder contains a number of scripts for extracting and analyzing text from documents. * `lookup-keywords.py`: easily finds the values for certain keywords whenever the page's layout is \"predic...",
+      "lines": 84,
+      "mtime": 1776158948313
+    },
+    {
+      "path": "external/pymupdf/docs/README.md",
+      "title": "PyMuPDF documentation",
+      "summary": "Welcome to the PyMuPDF documentation. This documentation relies on [Sphinx](https://www.sphinx-doc.org/en/master/) to publish HTML docs from markdown files written with [restructured text](https://...",
+      "lines": 136,
+      "mtime": 1776113105759
+    },
+    {
+      "path": "external/pymupdf/README.md",
+      "title": "PyMuPDF",
+      "summary": "**PyMuPDF** is a high performance **Python** library for data extraction, analysis, conversion & manipulation of [PDF (and other) documents](https://pymupdf.readthedocs.io/en/latest/the-basics.html...",
+      "lines": 61,
+      "mtime": 1776113105759
+    },
+    {
+      "path": "external/pymupdf/tests/README.md",
+      "title": "PyMuPDF tests",
+      "summary": "To run these tests: * Create and enter a venv. * Install PyMuPDF. * Install the Python packages listed in `PyMuPDF/scripts/gh_release.py:test_packages`. * Run pytest on the PyMuPDF directory. For e...",
+      "lines": 90,
+      "mtime": 1776113105826
+    },
+    {
+      "path": "external/pypdf/CHANGELOG.md",
+      "title": "CHANGELOG",
+      "summary": "- Disallow custom XML entity declarations for XMP metadata (#3724) - Skip MD5 key derivation for AES-256 encrypted PDFs (#3694) - Use remove_orphans in compress_identical_objects (#3310) - Fix PdfR...",
+      "lines": 2331,
+      "mtime": 1776113107535
+    },
+    {
+      "path": "external/pypdf/CONTRIBUTING.md",
+      "title": "CONTRIBUTING.md",
+      "summary": "Please check the [documentation page dedicated to development](https://pypdf.readthedocs.io/en/stable/dev/intro.html). Please go here: https://github.com/py-pdf/pypdf/issues Typically, you should n...",
+      "lines": 56,
+      "mtime": 1776113107535
+    },
+    {
+      "path": "external/pypdf/README.md",
+      "title": "pypdf",
+      "summary": "[![PyPI version](https://badge.fury.io/py/pypdf.svg)](https://badge.fury.io/py/pypdf) [![Python Support](https://img.shields.io/pypi/pyversions/pypdf.svg)](https://pypi.org/project/pypdf/) [![](htt...",
+      "lines": 117,
+      "mtime": 1776113107535
+    },
+    {
+      "path": "external/pypdfium2/README.md",
+      "title": "pypdfium2",
+      "summary": "<!-- SPDX-FileCopyrightText: 2026 geisserml <geisserml@gmail.com> --> <!-- SPDX-License-Identifier: CC-BY-4.0 --> <!-- [![Downloads](https://pepy.tech/badge/pypdfium2/month)](https://pepy.tech/proj...",
+      "lines": 1169,
+      "mtime": 1776113108777
+    },
+    {
+      "path": "external/resvg-py/README.md",
+      "title": "resvg_py",
+      "summary": "[![Downloads](https://static.pepy.tech/badge/resvg_py)](https://pepy.tech/project/resvg_py) [![CI](https://github.com/baseplate-admin/resvg-py/actions/workflows/CI.yaml/badge.svg?branch=master)](ht...",
+      "lines": 40,
+      "mtime": 1776113110254
+    },
+    {
+      "path": "external/resvg/CHANGELOG.md",
+      "title": "Change Log",
+      "summary": "All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://s...",
+      "lines": 1398,
+      "mtime": 1776116918131
+    },
+    {
+      "path": "external/resvg/crates/c-api/examples/cairo/README.md",
+      "title": "README.md",
+      "summary": "A simple example that shows how to use *resvg* through C API to render on a Cairo context. ```bash cargo build --manifest-path ../../Cargo.toml make LD_LIBRARY_PATH=../../../../target/debug ./examp...",
+      "lines": 10,
+      "mtime": 1776116918132
+    },
+    {
+      "path": "external/resvg/crates/c-api/README.md",
+      "title": "C API for resvg",
+      "summary": "```sh cargo build --release ``` This will produce dynamic and static C libraries that can be found at `../target/release`. The `resvg.h` is generated via [cbindgen](https://github.com/eqrion/cbindgen)",
+      "lines": 33,
+      "mtime": 1776116918132
+    },
+    {
+      "path": "external/resvg/crates/resvg/README.md",
+      "title": "README.md",
+      "summary": "![Build Status](https://github.com/linebender/resvg/workflows/Build/badge.svg) [![Crates.io](https://img.shields.io/crates/v/resvg.svg)](https://crates.io/crates/resvg) [![Documentation](https://do...",
+      "lines": 158,
+      "mtime": 1776116918132
+    },
+    {
+      "path": "external/resvg/crates/resvg/tests/fonts/README.md",
+      "title": "README.md",
+      "summary": "How fonts were subsetted: Twitter Color Emoji 1. Download: https://github.com/13rac1/twemoji-color-font/releases/download/v14.0.2/TwitterColorEmoji-SVGinOT-14.0.2.zip 2. Run `fonttools subset Twitt...",
+      "lines": 23,
+      "mtime": 1776116918153
+    },
+    {
+      "path": "external/resvg/crates/resvg/tests/README.md",
+      "title": "SVG tests",
+      "summary": "This directory contains a collection of SVG files used during *resvg* regression testing. We are using SVG files with a fixed, 200x200 viewbox for all tests. Here is a test file template: ```xml <s...",
+      "lines": 81,
+      "mtime": 1776116918135
+    },
+    {
+      "path": "external/resvg/crates/usvg/codegen/README.md",
+      "title": "README.md",
+      "summary": "We don't use cargo build script, since this data will rarely be changed and there is no point in regenerating it each time. To regenerate files run: ``` cargo run ```",
+      "lines": 9,
+      "mtime": 1776116918362
+    },
+    {
+      "path": "external/resvg/crates/usvg/README.md",
+      "title": "usvg",
+      "summary": "[![Crates.io](https://img.shields.io/crates/v/usvg.svg)](https://crates.io/crates/usvg) [![Documentation](https://docs.rs/usvg/badge.svg)](https://docs.rs/usvg) [![Rust 1.65+](https://img.shields.i...",
+      "lines": 65,
+      "mtime": 1776116918362
+    },
+    {
+      "path": "external/resvg/README.md",
+      "title": "README.md",
+      "summary": "![Build Status](https://github.com/linebender/resvg/workflows/Build/badge.svg) [![Crates.io](https://img.shields.io/crates/v/resvg.svg)](https://crates.io/crates/resvg) [![Documentation](https://do...",
+      "lines": 158,
+      "mtime": 1776116918132
+    },
+    {
+      "path": "external/resvg/tools/viewsvg/README.md",
+      "title": "viewsvg",
+      "summary": "A simple SVG viewer using resvg-qt. - Qt >= 5.6 Note: make sure you have read the parent readme. ```sh cargo build --release --manifest-path ../../crates/c-api/Cargo.toml qmake make ./viewsvg ```",
+      "lines": 22,
+      "mtime": 1776116918371
+    },
+    {
+      "path": "external/skia-python/README.md",
+      "title": "Skia python binding",
+      "summary": "[![CI](https://github.com/kyamagu/skia-python/actions/workflows/ci.yml/badge.svg)](https://github.com/kyamagu/skia-python/actions/workflows/ci.yml) [![PyPI version](https://badge.fury.io/py/skia-py...",
+      "lines": 84,
+      "mtime": 1776117213544
+    },
+    {
+      "path": "external/svg2pdf/CHANGELOG.md",
+      "title": "Changelog",
+      "summary": "All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versionin...",
+      "lines": 70,
+      "mtime": 1776116910288
+    },
+    {
+      "path": "external/svg2pdf/README.md",
+      "title": "svg2pdf",
+      "summary": "[![Build status](https://github.com/typst/svg2pdf/workflows/Continuous%20integration/badge.svg)](https://github.com/typst/svg2pdf/actions) [![Current crates.io release](https://img.shields.io/crate...",
+      "lines": 49,
+      "mtime": 1776116910289
+    },
+    {
+      "path": "external/svg2pdf/tests/README.md",
+      "title": "Introduction",
+      "summary": "PDF is a very complex format, and because of this, writing your own PDF files programmatically can be hard. Not only that, but because of the many PDF viewers out there with different implementatio...",
+      "lines": 55,
+      "mtime": 1776116910290
+    },
+    {
+      "path": "external/svgpathtools/CONTRIBUTING.md",
+      "title": "Contributing to svgpathtools",
+      "summary": "The following is a few and guidelines regarding the current philosophy, style, flaws, and the future directions of svgpathtools.  These guidelines are meant to make it easy to contribute. We need b...",
+      "lines": 66,
+      "mtime": 1776170119210
+    },
+    {
+      "path": "external/svgpathtools/README.md",
+      "title": "svgpathtools",
+      "summary": "[![Donate](https://img.shields.io/badge/donate-paypal-brightgreen)](https://www.paypal.com/donate?business=4SKJ27AM4EYYA&amp;no_recurring=0&amp;item_name=Support+the+creator+of+svgpathtools?++He%27...",
+      "lines": 516,
+      "mtime": 1776170119211
+    },
+    {
+      "path": "external/vexy-vsvg/AGENTS.md",
+      "title": "CLAUDE.md",
+      "summary": "Vexy Vsvg (not \"Vexy\", not \"Vsvg\", not \"Vexy Vsvg VSVG\") is a Rust SVG optimizer that's a port of the NodeJS SVGO project. It parses SVG files into an AST, runs 52 optimization plugins, and writes ...",
+      "lines": 150,
+      "mtime": 1776170289912
+    },
+    {
+      "path": "external/vexy-vsvg/CHANGELOG.md",
+      "title": "Changelog",
+      "summary": "All notable changes to this project will be documented in this file. - **5.7× faster than SVGO** on 76.3MB benchmark (15.8s vs 90.4s, median of 3 runs). - Rewrote `format_number()` in `convert_path...",
+      "lines": 127,
+      "mtime": 1776170289912
+    },
+    {
+      "path": "external/vexy-vsvg/CLAUDE.md",
+      "title": "CLAUDE.md",
+      "summary": "Vexy Vsvg (not \"Vexy\", not \"Vsvg\", not \"Vexy Vsvg VSVG\") is a Rust SVG optimizer that's a port of the NodeJS SVGO project. It parses SVG files into an AST, runs 52 optimization plugins, and writes ...",
+      "lines": 150,
+      "mtime": 1776170289912
+    },
+    {
+      "path": "external/vexy-vsvg/crates/vexy-vsvg-benchmarks/README.md",
+      "title": "vexy-vsvg-benchmarks",
+      "summary": "Benchmarks to keep us honest about performance. We use `criterion` to measure throughput and latency. -   **Parser**: How fast we convert string to AST. -   **Optimization**: How fast specific plug...",
+      "lines": 21,
+      "mtime": 1776170289914
+    },
+    {
+      "path": "external/vexy-vsvg/crates/vexy-vsvg-cli/README.md",
+      "title": "vexy-vsvg-cli",
+      "summary": "The command-line interface for Vexy Vsvg. It’s a drop-in replacement for the Node.js `svgo` binary. If you know how to use that, you know how to use this. It makes SVGs smaller. Fast. ```bash cargo...",
+      "lines": 62,
+      "mtime": 1776170289914
+    },
+    {
+      "path": "external/vexy-vsvg/crates/vexy-vsvg-comparison/README.md",
+      "title": "vexy-vsvg-comparison",
+      "summary": "The \"truth\" tool. This binary runs the Vexy optimizer side-by-side with the original Node.js SVGO to verify correctness. It is used during development to ensure we haven't broken anything or deviat...",
+      "lines": 28,
+      "mtime": 1776170289915
+    },
+    {
+      "path": "external/vexy-vsvg/crates/vexy-vsvg-ffi/README.md",
+      "title": "vexy-vsvg-ffi",
+      "summary": "C-compatible bindings for Vexy Vsvg. This allows you to embed the optimizer in C, C++, Python (via ctypes), Go (via cgo), Java (via JNI), or essentially any language that speaks C. This is the bord...",
+      "lines": 68,
+      "mtime": 1776170289916
+    },
+    {
+      "path": "external/vexy-vsvg/crates/vexy-vsvg-plugin-sdk/README.md",
+      "title": "vexy-vsvg-plugin-sdk",
+      "summary": "This crate contains the tools to build your own SVG optimization plugins, plus the implementation of the standard 52 plugins ported from SVGO. If you want to manipulate the SVG AST, you do it here....",
+      "lines": 55,
+      "mtime": 1776170289916
+    },
+    {
+      "path": "external/vexy-vsvg/crates/vexy-vsvg-python/README.md",
+      "title": "vexy-vsvg-python",
+      "summary": "Python bindings for Vexy Vsvg. This crate generates a Python extension module that allows you to call the Rust optimizer directly from Python code. It avoids the overhead of spawning a subprocess (...",
+      "lines": 41,
+      "mtime": 1776170289922
+    },
+    {
+      "path": "external/vexy-vsvg/crates/vexy-vsvg-test-utils/README.md",
+      "title": "vexy-vsvg-test-utils",
+      "summary": "Internal testing infrastructure. You probably don't need this unless you are working on Vexy Vsvg itself. It handles: 1.  **Fixture Loading**: Parsing the `@@@` separated test files used by SVGO. 2...",
+      "lines": 23,
+      "mtime": 1776170289922
+    },
+    {
+      "path": "external/vexy-vsvg/crates/vexy-vsvg-wasm/README.md",
+      "title": "vexy-vsvg-wasm",
+      "summary": "WebAssembly bindings for Vexy Vsvg. This runs the optimizer in the browser or Node.js, accessible via JavaScript. It comes in two flavors: 1.  **Enhanced**: Full feature set, metrics, error details...",
+      "lines": 44,
+      "mtime": 1776170289923
+    },
+    {
+      "path": "external/vexy-vsvg/crates/vexy-vsvg/README.md",
+      "title": "vexy-vsvg",
+      "summary": "This is the engine room. `vexy-vsvg` is the core library that powers the Vexy optimizer. It parses SVG text into a mutable Abstract Syntax Tree (AST), runs it through a gauntlet of optimization plu...",
+      "lines": 56,
+      "mtime": 1776170289923
+    },
+    {
+      "path": "external/vexy-vsvg/README.md",
+      "title": "Vexy Vsvg",
+      "summary": "Vexy Vsvg is a Rust port of [SVGO](https://github.com/svg/svgo) — the standard SVG optimizer. It parses SVG files, runs them through 55 optimization plugins, and writes them back out. Metadata, hid...",
+      "lines": 264,
+      "mtime": 1776170289913
+    },
+    {
+      "path": "external/vtracer/CHANGELOG.md",
+      "title": "Changelog",
+      "summary": "All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://s...",
+      "lines": 56,
+      "mtime": 1776113112529
+    },
+    {
+      "path": "external/vtracer/cmdapp/README.md",
+      "title": "README.md",
+      "summary": "<div align=\"center\"> <img src=\"https://raw.githubusercontent.com/visioncortex/vtracer/master/docs/images/visioncortex-banner.png\"> <h1>VTracer</h1> <p> <strong>Raster to Vector Graphics Converter b...",
+      "lines": 97,
+      "mtime": 1776113112530
+    },
+    {
+      "path": "external/vtracer/cmdapp/vtracer/README.md",
+      "title": "README.md",
+      "summary": "<div align=\"center\"> <img src=\"https://github.com/visioncortex/vtracer/raw/master/docs/images/visioncortex-banner.png\"> <h1>VTracer: Python Binding</h1> <p> <strong>Raster to Vector Graphics Conver...",
+      "lines": 86,
+      "mtime": 1776113112530
+    },
+    {
+      "path": "external/vtracer/README.md",
+      "title": "README.md",
+      "summary": "<div align=\"center\"> <img src=\"docs/images/visioncortex-banner.png\"> <h1>VTracer</h1> <p> <strong>Raster to Vector Graphics Converter</strong> </p> <h3> <a href=\"https://www.visioncortex.org/vtrace...",
+      "lines": 158,
+      "mtime": 1776113112529
+    },
+    {
+      "path": "README.md",
+      "title": "vexy-pdfsvgpy",
+      "summary": "--- this_file: README.md --- Unified Python API and CLI for PDF ⇄ SVG ⇄ PNG/JPG conversion — pure-pip, no Cairo, no Poppler, no system libraries. ```bash uv add vexy-pdfsvgpy pip install vexy-pdfsvgpy",
+      "lines": 108,
+      "mtime": 1776249903362
+    }
+  ]
+}

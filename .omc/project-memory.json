@@ -1,17 +1,32 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776113165537,
+  "lastScanned": 1776250726236,
   "projectRoot": "/Users/adam/Developer/vcs3/github.vexyart/vexy-pdfsvgpy",
   "techStack": {
-    "languages": [],
-    "frameworks": [],
+    "languages": [
+      {
+        "name": "Python",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "pyproject.toml"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "pytest",
+        "version": null,
+        "category": "testing"
+      }
+    ],
     "packageManager": null,
     "runtime": null
   },
   "build": {
     "buildCommand": null,
-    "testCommand": null,
-    "lintCommand": null,
+    "testCommand": "pytest",
+    "lintCommand": "ruff check",
     "devCommand": null,
     "scripts": {}
   },
@@ -24,7 +39,11 @@
   "structure": {
     "isMonorepo": false,
     "workspaces": [],
-    "mainDirectories": [],
+    "mainDirectories": [
+      "examples",
+      "src",
+      "tests"
+    ],
     "gitBranches": {
       "defaultBranch": "main",
       "branchingStrategy": null
@@ -32,13 +51,105 @@
   },
   "customNotes": [],
   "directoryMap": {
+    "examples": {
+      "path": "examples",
+      "purpose": "Example code",
+      "fileCount": 4,
+      "lastAccessed": 1776250726231,
+      "keyFiles": [
+        "convert_coupon.py",
+        "layer_stack.py",
+        "regularize_batch.py",
+        "trace_logo.py"
+      ]
+    },
     "external": {
       "path": "external",
       "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1776113165532,
+      "fileCount": 5,
+      "lastAccessed": 1776250726231,
       "keyFiles": [
-        "fl-uap-2604-coupon.command"
+        "IDEA.md",
+        "IDEA2.md",
+        "fl-uap-2604-coupon.command",
+        "pdfsvgpy_demo.py"
+      ]
+    },
+    "issues": {
+      "path": "issues",
+      "purpose": null,
+      "fileCount": 6,
+      "lastAccessed": 1776250726231,
+      "keyFiles": [
+        "101.md",
+        "102.md",
+        "103.md",
+        "105.md",
+        "106.md"
+      ]
+    },
+    "out": {
+      "path": "out",
+      "purpose": "Build output",
+      "fileCount": 67,
+      "lastAccessed": 1776250726232,
+      "keyFiles": [
+        "fontlab_posters-macos→pymupdf-p01.svg",
+        "fontlab_posters-norm-macos.pdf",
+        "fontlab_posters-norm-pymupdf.pdf",
+        "fontlab_posters-pymupdf-p01.svg",
+        "fontlab_posters-pymupdf-p01@300dpi.png"
+      ]
+    },
+    "out_dir": {
+      "path": "out_dir",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1776250726233,
+      "keyFiles": []
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 0,
+      "lastAccessed": 1776250726234,
+      "keyFiles": []
+    },
+    "test_dir": {
+      "path": "test_dir",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1776250726234,
+      "keyFiles": [
+        "a.png",
+        "b.png",
+        "c.jpg"
+      ]
+    },
+    "testdata": {
+      "path": "testdata",
+      "purpose": null,
+      "fileCount": 9,
+      "lastAccessed": 1776250726234,
+      "keyFiles": [
+        "fontlab_posters.pdf",
+        "hello_glyphs.svg",
+        "initial.svg",
+        "papercut.pdf",
+        "regularity.pdf"
+      ]
+    },
+    "tests": {
+      "path": "tests",
+      "purpose": "Test files",
+      "fileCount": 9,
+      "lastAccessed": 1776250726234,
+      "keyFiles": [
+        "__init__.py",
+        "test_cli.py",
+        "test_convert.py",
+        "test_dispatch.py",
+        "test_document.py"
       ]
     }
   },

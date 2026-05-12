@@ -12,7 +12,8 @@ from rich.table import Table
 
 from . import __version__
 from . import convert as _convert
-from .errors import VexyError
+from .errors import InvalidInput, VexyError
+from .types import FormatSpec
 
 
 class CLI:
@@ -155,6 +156,40 @@ class CLI:
         table.add_column("Size", justify="right", style="magenta")
         table.add_row(str(src), str(dst), f"{size:,} B")
         self._console.print(table)
+
+
+def _make_shortcut(fmt_name: str):
+    def _shortcut(self, input: str | None = None, output: str | None = None, **kwargs):
+        """Shortcut for `convert --voutput {fmt}`."""
+        return self.convert(input=input, output=output, voutput=fmt_name, **kwargs)
+    _shortcut.__name__ = fmt_name
+    _shortcut.__doc__ = f"Shortcut: `convert --voutput {fmt_name}` (inherits all other options)."
+    return _shortcut
+
+
+def _register_format_shortcuts() -> None:
+    formats = ["pdf", "svg", "png", "jpg"]
+    packagings = ["d", "m", "l", "s"]
+    contents = ["o", "t", "b"]
+    candidates: set[str] = set()
+    for f in formats:
+        candidates.add(f)  # bare
+        for p in packagings:
+            candidates.add(f"{f}_{p}")  # packaging only
+            for c in contents:
+                candidates.add(f"{f}_{p}{c}")  # packaging + content
+    for name in sorted(candidates):
+        if "_" not in name:
+            # Skip bare format names — they would shadow builtins/identifiers.
+            continue
+        try:
+            FormatSpec.parse(name)
+        except InvalidInput:
+            continue
+        setattr(CLI, name, _make_shortcut(name))
+
+
+_register_format_shortcuts()
 
 
 def main() -> None:

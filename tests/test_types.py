@@ -18,26 +18,26 @@ from vexy_pdfsvgpy.types import FormatSpec, Hint, Hints, Packaging, Content
     ("input_str", "expected_str"),
     [
         ("pdf", "pdf"),
-        ("pdf-d", "pdf"),
-        ("pdf-do", "pdf"),
-        ("pdf-m", "pdf-mo"),
-        ("pdf-mo", "pdf-mo"),
-        ("pdf-lt", "pdf-lt"),
-        ("pdf-lb", "pdf-lb"),
-        ("pdf-s", "pdf-so"),
+        ("pdf_d", "pdf"),
+        ("pdf_do", "pdf"),
+        ("pdf_m", "pdf_mo"),
+        ("pdf_mo", "pdf_mo"),
+        ("pdf_lt", "pdf_lt"),
+        ("pdf_lb", "pdf_lb"),
+        ("pdf_s", "pdf_so"),
         ("svg", "svg"),
-        ("svg-d", "svg"),
-        ("svg-do", "svg"),
-        ("svg-l", "svg-lo"),
-        ("svg-lo", "svg-lo"),
-        ("svg-lb", "svg-lb"),
-        ("svg-lt", "svg-lt"),
+        ("svg_d", "svg"),
+        ("svg_do", "svg"),
+        ("svg_l", "svg_lo"),
+        ("svg_lo", "svg_lo"),
+        ("svg_lb", "svg_lb"),
+        ("svg_lt", "svg_lt"),
         ("png", "png"),
-        ("png-d", "png"),
-        ("png-l", "png-l"),
+        ("png_d", "png"),
+        ("png_l", "png_l"),
         ("jpg", "jpg"),
-        ("jpg-d", "jpg"),
-        ("jpg-s", "jpg-s"),
+        ("jpg_d", "jpg"),
+        ("jpg_s", "jpg_s"),
     ],
 )
 def test_parse_valid_round_trips(input_str: str, expected_str: str) -> None:
@@ -53,13 +53,13 @@ def test_parse_valid_round_trips(input_str: str, expected_str: str) -> None:
     "bad_input",
     [
         "foo",         # unknown format
-        "pdf-x",       # bad packaging char
-        "pdf-dz",      # bad content char
-        "png-o",       # bitmap with content qualifier (single char that's a content char)
-        "jpg-l",       # jpg has no layered form
-        "svg-m",       # svg has no multi-page form
+        "pdf_x",       # bad packaging char
+        "pdf_dz",      # bad content char
+        "png_o",       # bitmap with content qualifier (single char that's a content char)
+        "jpg_l",       # jpg has no layered form
+        "svg_m",       # svg has no multi-page form
         "",            # empty string
-        "pdf-doo",     # qualifier too long
+        "pdf_doo",     # qualifier too long
     ],
 )
 def test_parse_invalid_raises(bad_input: str) -> None:
@@ -138,14 +138,14 @@ def test_jpg_content_is_none() -> None:
 
 
 def test_pdf_mo_fields() -> None:
-    spec = FormatSpec.parse("pdf-mo")
+    spec = FormatSpec.parse("pdf_mo")
     assert spec.format == "pdf"
     assert spec.packaging == Packaging.M
     assert spec.content == Content.O
 
 
 def test_svg_lt_fields() -> None:
-    spec = FormatSpec.parse("svg-lt")
+    spec = FormatSpec.parse("svg_lt")
     assert spec.format == "svg"
     assert spec.packaging == Packaging.L
     assert spec.content == Content.T

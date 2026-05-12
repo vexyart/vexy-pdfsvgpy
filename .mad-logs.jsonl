@@ -1,0 +1,2 @@
+{"timestamp":"2026-04-15T10:32:12.341Z","level":"info","message":"Registered agent permissions","context":{"sessionID":"ses_current","agentType":"developer","canEdit":true}}
+{"timestamp":"2026-04-15T10:32:47.481Z","level":"info","message":"Registered agent permissions","context":{"sessionID":"ses_current","agentType":"orchestrator","canEdit":false}}

@@ -90,10 +90,10 @@ def test_from_path_unknown_ext(tmp_path: Path) -> None:
 
 
 def test_explicit_spec_overrides_extension(tmp_path: Path) -> None:
-    # File has .svg extension but we pass an explicit pdf-m spec.
+    # File has .svg extension but we pass an explicit pdf_m spec.
     f = tmp_path / "doc.svg"
     f.write_bytes(b"<svg/>")
-    spec = FormatSpec.parse("pdf-mo")
+    spec = FormatSpec.parse("pdf_mo")
     d = Document.from_path(f, spec=spec)
     assert d.spec == spec
     assert d.spec.format == "pdf"

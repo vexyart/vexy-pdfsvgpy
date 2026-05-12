@@ -91,7 +91,7 @@ Content qualifiers:
 - `t` for text, with embedded fonts if possible
 - `b` for bitmap-only 
 
-The fully qualified format names is `{format}-{packaging}{content}`, for example `pdf-mo` means a multi-page PDF file with outlines. Either the packaging or the content qualifiers can be omitted for output if they are the default.
+The fully qualified format names is `{format}-{packaging}{content}`, for example `pdf_mo` means a multi-page PDF file with outlines. Either the packaging or the content qualifiers can be omitted for output if they are the default.
 
 ### Vector format: `svg`
 
@@ -113,12 +113,14 @@ Packaging qualifiers:
 
 - `d` for collection of files (DEFAULT, can be omitted)
 - `l` for layered single-page file (= APNG with multiple frames and 0 delay between the frames)
+- `s` for single-page file
 
 ### Bitmap format: `jpg`
 
 Packaging qualifiers: 
 
 - `d` for collection of files (DEFAULT, can be omitted)
+- `s` for single-page file
 
 ## Tool hints
 
