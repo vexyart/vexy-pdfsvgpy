@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/operations/test_reshape.py
 """Tests for reshape operations (Phase 5)."""
+
+# this_file: tests/operations/test_reshape.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -8,7 +9,7 @@ import pytest
 
 from vexy_pdfsvgpy.operations import reshape
 
-TESTDATA = Path(__file__).parent.parent.parent / "testdata"
+TESTDATA = Path(__file__).parent.parent / "fixtures"
 FONTLAB = TESTDATA / "fontlab_posters.pdf"
 REGULARITY = TESTDATA / "regularity.pdf"
 PAPERCUT = TESTDATA / "papercut.pdf"

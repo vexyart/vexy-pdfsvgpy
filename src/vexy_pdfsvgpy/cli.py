@@ -1,8 +1,9 @@
-from __future__ import annotations
-
-# this_file: src/vexy_pdfsvgpy/cli.py
 """Fire CLI for vexy-pdfsvgpy."""
 
+# this_file: src/vexy_pdfsvgpy/cli.py
+from __future__ import annotations
+
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -55,7 +56,11 @@ class CLI:
         backdrop: str | None = None,
         verbose: bool = False,
     ) -> int:
-        """Convert one file to another format. Format inferred from extension or specified via --vinput/--binput/--voutput/--boutput."""
+        """Convert one file to another format.
+
+        Format is inferred from the file extension or specified explicitly via
+        --vinput/--binput/--voutput/--boutput.
+        """
         self._configure_logging(verbose)
         if input is None or output is None:
             self._console.print("[red]Error:[/red] --input and --output are required")
@@ -98,7 +103,13 @@ class CLI:
         except VexyError as e:
             self._console.print(f"[red]{type(e).__name__}:[/red] {e}")
             return 1
-        self._print_summary(Path(input), out_path)
+        # convert() returns a single Path (single output) or a list (multi-output);
+        # narrow to a Path before summarising, reporting the last file for lists.
+        if isinstance(out_path, list):
+            if out_path:
+                self._print_summary(Path(input), out_path[-1])
+        else:
+            self._print_summary(Path(input), out_path)
         return 0
 
     def regularize(
@@ -111,7 +122,7 @@ class CLI:
         """Split a multi-page PDF into one file per page."""
         self._configure_logging(verbose)
         try:
-            from .operations import reshape
+            from .operations import reshape  # noqa: PLC0415
 
             in_path = Path(input)
             out_path = Path(out_dir) if out_dir else in_path.parent
@@ -128,7 +139,7 @@ class CLI:
         """Merge multiple PDFs (comma-separated paths) into one."""
         self._configure_logging(verbose)
         try:
-            from .operations import reshape
+            from .operations import reshape  # noqa: PLC0415
 
             srcs = [Path(p.strip()) for p in inputs.split(",") if p.strip()]
             if not srcs:
@@ -158,10 +169,15 @@ class CLI:
         self._console.print(table)
 
 
-def _make_shortcut(fmt_name: str):
-    def _shortcut(self, input: str | None = None, output: str | None = None, **kwargs):
+def _make_shortcut(fmt_name: str) -> Callable[..., int]:
+    """Build a CLI method that forwards to ``convert`` with a fixed vector output format."""
+
+    def _shortcut(
+        self: CLI, input: str | None = None, output: str | None = None, **kwargs: Any
+    ) -> int:
         """Shortcut for `convert --voutput {fmt}`."""
         return self.convert(input=input, output=output, voutput=fmt_name, **kwargs)
+
     _shortcut.__name__ = fmt_name
     _shortcut.__doc__ = f"Shortcut: `convert --voutput {fmt_name}` (inherits all other options)."
     return _shortcut
@@ -193,9 +209,9 @@ _register_format_shortcuts()
 
 
 def main() -> None:
-    import sys
+    import sys  # noqa: PLC0415
 
-    import fire
+    import fire  # noqa: PLC0415
 
     # Fire prints the return value but always exits 0; use sys.exit to propagate
     # integer return codes from subcommands.

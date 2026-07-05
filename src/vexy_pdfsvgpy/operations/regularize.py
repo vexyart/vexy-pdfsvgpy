@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/operations/regularize.py
 """Regularize — round-trip canonicalization of PDF and SVG files."""
+
+# this_file: src/vexy_pdfsvgpy/operations/regularize.py
+from __future__ import annotations
 
 from pathlib import Path
 from typing import Literal
@@ -16,10 +17,12 @@ def regularize_pdf(
     or via Apple PDFKit on macOS with hint 'apple'."""
     try:
         if backend == "pymupdf":
-            from ..backends import pymupdf_backend
+            from ..backends import pymupdf_backend  # noqa: PLC0415
+
             return pymupdf_backend.pdf_normalize(src, dst)
         if backend == "apple":
-            from ..backends import apple_backend
+            from ..backends import apple_backend  # noqa: PLC0415
+
             return apple_backend.pdf_normalize(src, dst)
         raise ValueError(f"unknown pdf backend: {backend}")
     except Exception as e:
@@ -38,12 +41,14 @@ def regularize_svg(
     """Canonicalize an SVG.
 
     'pymupdf' round-trips through get_svg_image(text_as_path=True).
-    'resvg' rasterizes to PNG then wraps the bitmap as a base64 <image> inside a minimal SVG
-    (a raster-only canonicalization useful when the input has exotic features pymupdf can't round-trip).
+    'resvg' rasterizes to PNG then wraps the bitmap as a base64 <image> inside a
+    minimal SVG (a raster-only canonicalization useful when the input has exotic
+    features pymupdf can't round-trip).
     """
     try:
         if backend == "pymupdf":
-            from ..backends import pymupdf_backend
+            from ..backends import pymupdf_backend  # noqa: PLC0415
+
             return pymupdf_backend.svg_normalize(src, dst)
         if backend == "resvg":
             return _regularize_svg_resvg(src, dst, width=width)
@@ -56,14 +61,14 @@ def regularize_svg(
 
 def _regularize_svg_resvg(src: Path, dst: Path, *, width: int) -> Path:
     """Raster-wrap canonicalization: render to PNG then embed as base64 in minimal SVG."""
-    import base64
+    import base64  # noqa: PLC0415
 
-    from ..backends import resvg_backend
+    from ..backends import resvg_backend  # noqa: PLC0415
 
     png_path = dst.with_suffix(".tmp.png")
     try:
         resvg_backend.svg_to_png(src, png_path, width=width)
-        from PIL import Image
+        from PIL import Image  # noqa: PLC0415
 
         with Image.open(png_path) as img:
             w, h = img.size

@@ -1,0 +1,25 @@
+# this_file: docs/_config.yml
+title: vexy-pdfsvgpy
+description: Unified PDF/SVG/PNG conversion with zero system-library dependencies
+remote_theme: just-the-docs/just-the-docs
+color_scheme: dark
+url: https://vexyart.github.io
+baseurl: /vexy-pdfsvgpy
+
+aux_links:
+  GitHub: https://github.com/vexyart/vexy-pdfsvgpy
+  PyPI: https://pypi.org/project/vexy-pdfsvgpy/
+
+plugins:
+  - jekyll-remote-theme
+
+# Files that live at the repo root but should not be built into the site.
+exclude:
+  - "*.py"
+  - "*.sh"
+  - "*.lock"
+  - src/
+  - tests/
+  - examples/
+  - external/
+  - testdata/

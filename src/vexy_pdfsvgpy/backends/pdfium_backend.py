@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/backends/pdfium_backend.py
 """pypdfium2 backend — PDF rasterization."""
+
+# this_file: src/vexy_pdfsvgpy/backends/pdfium_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -31,7 +32,7 @@ def pdf_to_png(src: Path, dst: Path, *, page: int = 0, dpi: int = 300) -> Path:
     Raises:
         RuntimeError: Wraps any pypdfium2 or Pillow error with a ``[pdfium]`` prefix.
     """
-    import pypdfium2 as pdfium
+    import pypdfium2 as pdfium  # noqa: PLC0415
 
     src = Path(src)
     dst = Path(dst)
@@ -59,7 +60,7 @@ def pdf_page_count(src: Path) -> int:
     Raises:
         RuntimeError: Wraps any pypdfium2 error with a ``[pdfium]`` prefix.
     """
-    import pypdfium2 as pdfium
+    import pypdfium2 as pdfium  # noqa: PLC0415
 
     src = Path(src)
     try:

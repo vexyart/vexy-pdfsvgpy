@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/backends/pikepdf_backend.py
 """pikepdf backend — lossless PDF split, merge, and page overlay."""
+
+# this_file: src/vexy_pdfsvgpy/backends/pikepdf_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -18,7 +19,7 @@ def split(src: Path, out_dir: Path, *, stem: str | None = None) -> list[Path]:
     to `src.stem` and `pad = max(2, len(str(n_pages)))`.
     """
     try:
-        import pikepdf
+        import pikepdf  # noqa: PLC0415
     except Exception as e:
         raise RuntimeError(f"[pikepdf] split failed: {e}") from e
 
@@ -54,7 +55,7 @@ def merge(srcs: list[Path], dst: Path) -> Path:
     open until `merged.save()` completes.
     """
     try:
-        import pikepdf
+        import pikepdf  # noqa: PLC0415
     except Exception as e:
         raise RuntimeError(f"[pikepdf] merge failed: {e}") from e
 
@@ -86,8 +87,7 @@ def overlay_pages(base: Path, overlays: list[Path], dst: Path) -> Path:
     The result is written to `dst`; base and all overlays are lossless.
     """
     try:
-        import pikepdf
-        from pikepdf import Page, Pdf, Rectangle
+        from pikepdf import Page, Pdf, Rectangle  # noqa: PLC0415
     except Exception as e:
         raise RuntimeError(f"[pikepdf] overlay_pages failed: {e}") from e
 
@@ -97,7 +97,7 @@ def overlay_pages(base: Path, overlays: list[Path], dst: Path) -> Path:
     overlay_pdfs: list[Pdf] = []
     try:
         dest = Page(base_pdf.pages[0])
-        rect = Rectangle(*dest.mediabox)
+        rect = Rectangle(*dest.mediabox)  # type: ignore[misc]  # mediabox is an Object, iterable at runtime
         for ov_path in overlays:
             ov_pdf = Pdf.open(str(ov_path))
             overlay_pdfs.append(ov_pdf)
@@ -117,7 +117,8 @@ def overlay_pages(base: Path, overlays: list[Path], dst: Path) -> Path:
 def pdf_page_count(src: Path) -> int:
     """Return the number of pages in a PDF."""
     try:
-        import pikepdf
+        import pikepdf  # noqa: PLC0415
+
         pdf = pikepdf.open(str(src))
         try:
             return len(pdf.pages)

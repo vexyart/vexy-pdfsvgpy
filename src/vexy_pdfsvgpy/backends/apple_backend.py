@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/backends/apple_backend.py
 """Apple PDFKit + CoreGraphics backend (macOS only)."""
+
+# this_file: src/vexy_pdfsvgpy/backends/apple_backend.py
+from __future__ import annotations
 
 import sys
 from pathlib import Path
@@ -23,14 +24,15 @@ def pdf_page_count(src: Path) -> int:
     """Return the number of pages in a PDF via PDFKit."""
     _require_darwin("pdf_page_count")
     try:
-        from Foundation import NSURL
-        from Quartz import PDFDocument
+        from Foundation import NSURL  # noqa: PLC0415
+        from Quartz import PDFDocument  # noqa: PLC0415
 
         url = NSURL.fileURLWithPath_(str(src))
         doc = PDFDocument.alloc().initWithURL_(url)
         if doc is None:
             raise RuntimeError(f"[apple] PDFKit could not open {src}")
-        return doc.pageCount()
+        # PyObjC returns an untyped Any; coerce to a plain int for the signature.
+        return int(doc.pageCount())
     except RuntimeError:
         raise
     except Exception as e:
@@ -42,8 +44,8 @@ def pdf_normalize(src: Path, dst: Path) -> Path:
     _require_darwin("pdf_normalize")
     _ensure_parent(dst)
     try:
-        from Foundation import NSURL
-        from Quartz import PDFDocument
+        from Foundation import NSURL  # noqa: PLC0415
+        from Quartz import PDFDocument  # noqa: PLC0415
 
         url = NSURL.fileURLWithPath_(str(src))
         doc = PDFDocument.alloc().initWithURL_(url)
@@ -64,8 +66,8 @@ def split(src: Path, out_dir: Path, *, stem: str | None = None) -> list[Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
     _stem = stem if stem is not None else src.stem
     try:
-        from Foundation import NSURL
-        from Quartz import PDFDocument
+        from Foundation import NSURL  # noqa: PLC0415
+        from Quartz import PDFDocument  # noqa: PLC0415
 
         url = NSURL.fileURLWithPath_(str(src))
         doc = PDFDocument.alloc().initWithURL_(url)
@@ -94,8 +96,8 @@ def merge(srcs: list[Path], dst: Path) -> Path:
     _require_darwin("merge")
     _ensure_parent(dst)
     try:
-        from Foundation import NSURL
-        from Quartz import PDFDocument
+        from Foundation import NSURL  # noqa: PLC0415
+        from Quartz import PDFDocument  # noqa: PLC0415
 
         merged = PDFDocument.alloc().init()
         insert_at = 0
@@ -121,8 +123,8 @@ def pdf_to_png(src: Path, dst: Path, *, page: int = 0, width: int = 2048) -> Pat
     _require_darwin("pdf_to_png")
     _ensure_parent(dst)
     try:
-        import Quartz
-        from Foundation import NSURL
+        import Quartz  # noqa: PLC0415
+        from Foundation import NSURL  # noqa: PLC0415
 
         url = NSURL.fileURLWithPath_(str(src))
         pdf = Quartz.CGPDFDocumentCreateWithURL(url)
@@ -135,8 +137,8 @@ def pdf_to_png(src: Path, dst: Path, *, page: int = 0, width: int = 2048) -> Pat
         if media.size.width <= 0 or media.size.height <= 0:
             raise RuntimeError("[apple] invalid media box")
         scale = width / media.size.width
-        w = int(round(media.size.width * scale))
-        h = int(round(media.size.height * scale))
+        w = round(media.size.width * scale)
+        h = round(media.size.height * scale)
         cs = Quartz.CGColorSpaceCreateDeviceRGB()
         ctx = Quartz.CGBitmapContextCreate(
             None, w, h, 8, 0, cs, Quartz.kCGImageAlphaPremultipliedLast

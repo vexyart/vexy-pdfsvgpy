@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/backends/test_pypdf_backend.py
 """Tests for pypdf_backend — split, merge, page count."""
+
+# this_file: tests/backends/test_pypdf_backend.py
+from __future__ import annotations
 
 import re
 from pathlib import Path
@@ -9,7 +10,7 @@ import pytest
 
 from vexy_pdfsvgpy.backends import pypdf_backend as b
 
-TESTDATA = Path(__file__).parent.parent.parent / "testdata"
+TESTDATA = Path(__file__).parent.parent / "fixtures"
 FONTLAB = TESTDATA / "fontlab_posters.pdf"
 REGULARITY = TESTDATA / "regularity.pdf"
 PAPERCUT = TESTDATA / "papercut.pdf"
@@ -41,9 +42,9 @@ def test_split_filenames_padded(tmp_path):
     for p in outputs:
         assert pattern.match(p.name), f"Filename {p.name!r} doesn't match padding pattern"
     # Verify page numbers are zero-padded to at least 2 digits
-    assert outputs[0].name.endswith(f"-pypdf-page-{'1':>0{pad}}.pdf".replace(
-        f"{'1':>0{pad}}", f"{1:0{pad}d}"
-    ))
+    assert outputs[0].name.endswith(
+        f"-pypdf-page-{'1':>0{pad}}.pdf".replace(f"{'1':>0{pad}}", f"{1:0{pad}d}")
+    )
 
 
 def test_merge_round_trip(tmp_path):

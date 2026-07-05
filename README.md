@@ -4,7 +4,15 @@ this_file: README.md
 
 # vexy-pdfsvgpy
 
+[![CI](https://github.com/vexyart/vexy-pdfsvgpy/actions/workflows/ci.yml/badge.svg)](https://github.com/vexyart/vexy-pdfsvgpy/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/vexy-pdfsvgpy.svg)](https://pypi.org/project/vexy-pdfsvgpy/)
+[![Python](https://img.shields.io/pypi/pyversions/vexy-pdfsvgpy.svg)](https://pypi.org/project/vexy-pdfsvgpy/)
+
 Unified Python API and CLI for PDF ⇄ SVG ⇄ PNG/JPG conversion — pure-pip, no Cairo, no Poppler, no system libraries.
+
+<img src="docs/assets/icon.png" alt="One convert() call, no system libraries" width="260">
+
+Full documentation: **https://vexyart.github.io/vexy-pdfsvgpy/**
 
 ## Install
 

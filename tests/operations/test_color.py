@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/operations/test_color.py
 """Tests for operations/color.py."""
+
+# this_file: tests/operations/test_color.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -10,7 +11,9 @@ from PIL import Image
 from vexy_pdfsvgpy.operations.color import ColorOptions, apply_color_bitmap, parse_color
 
 
-def _make_png(tmp_path: Path, color: tuple[int, int, int, int], size: tuple[int, int] = (32, 32)) -> Path:
+def _make_png(
+    tmp_path: Path, color: tuple[int, int, int, int], size: tuple[int, int] = (32, 32)
+) -> Path:
     p = tmp_path / f"fixture_{color[0]}_{color[1]}_{color[2]}.png"
     img = Image.new("RGBA", size, color)
     img.save(p, "PNG")

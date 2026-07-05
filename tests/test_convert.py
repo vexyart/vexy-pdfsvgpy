@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/test_convert.py
 """End-to-end tests for the public convert() API."""
+
+# this_file: tests/test_convert.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -9,7 +10,7 @@ import pytest
 from vexy_pdfsvgpy import convert
 from vexy_pdfsvgpy.errors import InvalidInput, UnsupportedConversion
 
-TESTDATA = Path(__file__).parent.parent / "testdata"
+TESTDATA = Path(__file__).parent / "fixtures"
 
 
 def test_convert_pdf_to_png_via_ext_inference(tmp_path: Path) -> None:
@@ -39,6 +40,7 @@ def test_convert_svg_to_png(tmp_path: Path) -> None:
     assert out.stat().st_size > 0
     # Check PNG dimensions are non-zero via struct
     import struct
+
     data = out.read_bytes()
     assert data[:8] == b"\x89PNG\r\n\x1a\n"
     # PNG IHDR chunk: bytes 16-20 = width, 20-24 = height
@@ -57,6 +59,7 @@ def test_convert_with_hint_mu_on_svg_to_png(tmp_path: Path) -> None:
     assert out_mu.exists() and out_mu.stat().st_size > 0
 
     import struct
+
     data = out_mu.read_bytes()
     width = struct.unpack(">I", data[16:20])[0]
     assert width > 0

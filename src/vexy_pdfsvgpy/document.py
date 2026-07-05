@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/document.py
 """Document and Page intermediate types for the conversion pipeline."""
+
+# this_file: src/vexy_pdfsvgpy/document.py
+from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -81,7 +82,7 @@ class Document:
         resolved_spec = spec or FormatSpec.from_extension(p)
         placeholder = Page(
             content=b"",
-            kind=resolved_spec.format,  # type: ignore[arg-type]
+            kind=resolved_spec.format,
             width=0.0,
             height=0.0,
         )

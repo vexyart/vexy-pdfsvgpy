@@ -1,5 +1,6 @@
-# this_file: tests/test_types.py
 """Tests for FormatSpec, Hints, and error classes."""
+
+# this_file: tests/test_types.py
 from __future__ import annotations
 
 from pathlib import Path
@@ -7,12 +8,12 @@ from pathlib import Path
 import pytest
 
 from vexy_pdfsvgpy.errors import BackendFailure, InvalidInput
-from vexy_pdfsvgpy.types import FormatSpec, Hint, Hints, Packaging, Content
-
+from vexy_pdfsvgpy.types import Content, FormatSpec, Hint, Hints, Packaging
 
 # ---------------------------------------------------------------------------
 # FormatSpec.parse — valid round-trips
 # ---------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize(
     ("input_str", "expected_str"),
@@ -42,24 +43,27 @@ from vexy_pdfsvgpy.types import FormatSpec, Hint, Hints, Packaging, Content
 )
 def test_parse_valid_round_trips(input_str: str, expected_str: str) -> None:
     spec = FormatSpec.parse(input_str)
-    assert str(spec) == expected_str, f"parse({input_str!r}).__str__() = {str(spec)!r}, want {expected_str!r}"
+    assert str(spec) == expected_str, (
+        f"parse({input_str!r}).__str__() = {str(spec)!r}, want {expected_str!r}"
+    )
 
 
 # ---------------------------------------------------------------------------
 # FormatSpec.parse — invalid inputs must raise InvalidInput
 # ---------------------------------------------------------------------------
 
+
 @pytest.mark.parametrize(
     "bad_input",
     [
-        "foo",         # unknown format
-        "pdf_x",       # bad packaging char
-        "pdf_dz",      # bad content char
-        "png_o",       # bitmap with content qualifier (single char that's a content char)
-        "jpg_l",       # jpg has no layered form
-        "svg_m",       # svg has no multi-page form
-        "",            # empty string
-        "pdf_doo",     # qualifier too long
+        "foo",  # unknown format
+        "pdf_x",  # bad packaging char
+        "pdf_dz",  # bad content char
+        "png_o",  # bitmap with content qualifier (single char that's a content char)
+        "jpg_l",  # jpg has no layered form
+        "svg_m",  # svg has no multi-page form
+        "",  # empty string
+        "pdf_doo",  # qualifier too long
     ],
 )
 def test_parse_invalid_raises(bad_input: str) -> None:
@@ -70,6 +74,7 @@ def test_parse_invalid_raises(bad_input: str) -> None:
 # ---------------------------------------------------------------------------
 # FormatSpec.from_extension
 # ---------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize(
     ("path", "expected_fmt"),
@@ -100,12 +105,16 @@ def test_from_extension_path_object() -> None:
 # is_vector / is_bitmap
 # ---------------------------------------------------------------------------
 
-@pytest.mark.parametrize("fmt,expected_vector,expected_bitmap", [
-    ("pdf", True, False),
-    ("svg", True, False),
-    ("png", False, True),
-    ("jpg", False, True),
-])
+
+@pytest.mark.parametrize(
+    "fmt,expected_vector,expected_bitmap",
+    [
+        ("pdf", True, False),
+        ("svg", True, False),
+        ("png", False, True),
+        ("jpg", False, True),
+    ],
+)
 def test_is_vector_bitmap(fmt: str, expected_vector: bool, expected_bitmap: bool) -> None:
     spec = FormatSpec.parse(fmt)
     assert spec.is_vector == expected_vector
@@ -115,6 +124,7 @@ def test_is_vector_bitmap(fmt: str, expected_vector: bool, expected_bitmap: bool
 # ---------------------------------------------------------------------------
 # FormatSpec field values after parse
 # ---------------------------------------------------------------------------
+
 
 def test_pdf_defaults_content_o() -> None:
     spec = FormatSpec.parse("pdf")
@@ -154,6 +164,7 @@ def test_svg_lt_fields() -> None:
 # ---------------------------------------------------------------------------
 # Hints.parse
 # ---------------------------------------------------------------------------
+
 
 def test_hints_parse_none_is_empty() -> None:
     h = Hints.parse(None)
@@ -196,6 +207,7 @@ def test_hints_parse_mixed_iterable() -> None:
 # Hints.pick
 # ---------------------------------------------------------------------------
 
+
 def test_hints_pick_first_match() -> None:
     h = Hints.parse("re,mu,pk")
     result = h.pick([Hint.MU, Hint.PK])
@@ -225,6 +237,7 @@ def test_hints_pick_empty_preferences() -> None:
 # BackendFailure
 # ---------------------------------------------------------------------------
 
+
 def test_backend_failure_str() -> None:
     original = ValueError("disk full")
     err = BackendFailure("pymupdf", "pdf→png", original)
@@ -241,6 +254,7 @@ def test_backend_failure_attrs() -> None:
 
 def test_backend_failure_is_vexy_error() -> None:
     from vexy_pdfsvgpy.errors import VexyError
+
     err = BackendFailure("resvg", "svg→png", Exception("x"))
     assert isinstance(err, VexyError)
 
@@ -248,6 +262,7 @@ def test_backend_failure_is_vexy_error() -> None:
 # ---------------------------------------------------------------------------
 # this_file marker checks
 # ---------------------------------------------------------------------------
+
 
 def test_errors_has_this_file_marker() -> None:
     text = Path("src/vexy_pdfsvgpy/errors.py").read_text()

@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/test_document.py
 """Tests for vexy_pdfsvgpy.document — Document and Page intermediate types."""
+
+# this_file: tests/test_document.py
+from __future__ import annotations
 
 import struct
 import zlib
@@ -12,15 +13,17 @@ from vexy_pdfsvgpy.document import Document, Page
 from vexy_pdfsvgpy.errors import InvalidInput
 from vexy_pdfsvgpy.types import FormatSpec
 
-TESTDATA = Path(__file__).parent.parent / "testdata"
+TESTDATA = Path(__file__).parent / "fixtures"
 
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 def _make_tiny_png(path: Path, width: int = 3, height: int = 3) -> Path:
-    """Write a minimal valid 3×3 red PNG to *path* without Pillow."""
+    """Write a minimal valid 3x3 red PNG to *path* without Pillow."""
+
     def _chunk(tag: bytes, data: bytes) -> bytes:
         c = struct.pack(">I", len(data)) + tag + data
         return c + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
@@ -28,7 +31,7 @@ def _make_tiny_png(path: Path, width: int = 3, height: int = 3) -> Path:
     # IHDR
     ihdr = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
     # Raw image: filter byte 0 + RGB pixels
-    raw = b"".join(b"\x00" + b"\xFF\x00\x00" * width for _ in range(height))
+    raw = b"".join(b"\x00" + b"\xff\x00\x00" * width for _ in range(height))
     idat = zlib.compress(raw)
 
     png = b"\x89PNG\r\n\x1a\n"
@@ -42,6 +45,7 @@ def _make_tiny_png(path: Path, width: int = 3, height: int = 3) -> Path:
 # ---------------------------------------------------------------------------
 # Tests
 # ---------------------------------------------------------------------------
+
 
 def test_empty_document() -> None:
     d = Document.empty()

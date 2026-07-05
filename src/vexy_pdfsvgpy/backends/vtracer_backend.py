@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/backends/vtracer_backend.py
 """vtracer backend — raster image vectorization (PNG/JPG → SVG)."""
+
+# this_file: src/vexy_pdfsvgpy/backends/vtracer_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 from typing import Literal
@@ -27,7 +28,7 @@ def trace(
     path_precision: int = 8,
 ) -> Path:
     """Vectorize a raster image into SVG via vtracer's Rust pipeline."""
-    import vtracer
+    import vtracer  # noqa: PLC0415
 
     dst.parent.mkdir(parents=True, exist_ok=True)
     try:

@@ -4,6 +4,17 @@ this_file: TODO.md
 
 # vexy-pdfsvgpy — Task list
 
+## Post-modernization backlog (2026-07-05)
+
+Larger ideas surfaced during the modernization pass; none block the current release.
+
+- [ ] **Multi-input composition.** `convert()` raises `NotImplementedError` when combining several inputs into one `m` (multi-page) or `l` (layered) document. Wire it through `reshape.docs2pages_pdf` / `docs2layers_pdf` and add tests.
+- [ ] **Coverage on optional backends.** `cairo_backend` (27%) and `ghostscript_backend` (22%) are only exercised when their extras are installed; add extras-gated tests or mark them clearly out of the default coverage target.
+- [ ] **Windows CI.** The matrix runs Ubuntu + macOS; add `windows-latest` once backend wheel availability there is confirmed.
+- [ ] **Coverage gate.** Consider `--cov-fail-under=80` in CI once optional-backend coverage is addressed.
+
+---
+
 Flat, itemized view of `SPEC.md` §11. Implementation order is top-to-bottom; each phase is a gate — do not start the next until its tests and real-life verification pass. Every task ends with `verify:` — the concrete check that proves it's done.
 
 ## Process rules (read first)

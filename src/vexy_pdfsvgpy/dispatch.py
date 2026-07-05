@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/dispatch.py
 """Capability dispatch — pick a backend function per operation + hints."""
+
+# this_file: src/vexy_pdfsvgpy/dispatch.py
+from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -29,18 +30,19 @@ class Capability(StrEnum):
 
 @dataclass(frozen=True, slots=True)
 class BackendFn:
-    name: str            # e.g. "pymupdf"
-    hint: Hint           # e.g. Hint.MU
+    name: str  # e.g. "pymupdf"
+    hint: Hint  # e.g. Hint.MU
     func: Callable[..., Any]
 
 
-def _load_table() -> dict[Capability, tuple[BackendFn, ...]]:
+def _load_table() -> dict[Capability, tuple[BackendFn, ...]]:  # noqa: PLR0915 - flat backend registry
     """Build the dispatch table lazily so missing backends don't break import."""
     table: dict[Capability, list[BackendFn]] = {c: [] for c in Capability}
 
     # pymupdf — workhorse
     try:
-        from .backends import pymupdf_backend as m
+        from .backends import pymupdf_backend as m  # noqa: PLC0415
+
         table[Capability.PDF_TO_PNG].append(BackendFn("pymupdf", Hint.MU, m.pdf_to_png))
         table[Capability.PDF_TO_SVG].append(BackendFn("pymupdf", Hint.MU, m.pdf_to_svg))
         table[Capability.SVG_TO_PDF].append(BackendFn("pymupdf", Hint.MU, m.svg_to_pdf))
@@ -54,21 +56,24 @@ def _load_table() -> dict[Capability, tuple[BackendFn, ...]]:
 
     # pypdfium2 — alternate PDF → PNG
     try:
-        from .backends import pdfium_backend as pf
+        from .backends import pdfium_backend as pf  # noqa: PLC0415
+
         table[Capability.PDF_TO_PNG].append(BackendFn("pdfium", Hint.MU, pf.pdf_to_png))
     except ImportError:
         pass
 
     # resvg — preferred SVG → PNG; inserted at FRONT
     try:
-        from .backends import resvg_backend as r
+        from .backends import resvg_backend as r  # noqa: PLC0415
+
         table[Capability.SVG_TO_PNG].insert(0, BackendFn("resvg", Hint.RE, r.svg_to_png))
     except ImportError:
         pass
 
     # pypdf — pure-Python split/merge
     try:
-        from .backends import pypdf_backend as pp
+        from .backends import pypdf_backend as pp  # noqa: PLC0415
+
         table[Capability.PDF_SPLIT].append(BackendFn("pypdf", Hint.PK, pp.split))
         table[Capability.PDF_MERGE].append(BackendFn("pypdf", Hint.PK, pp.merge))
     except ImportError:
@@ -76,7 +81,8 @@ def _load_table() -> dict[Capability, tuple[BackendFn, ...]]:
 
     # pikepdf — lossless; merge inserted at FRONT (preferred over pypdf)
     try:
-        from .backends import pikepdf_backend as pk
+        from .backends import pikepdf_backend as pk  # noqa: PLC0415
+
         table[Capability.PDF_SPLIT].append(BackendFn("pikepdf", Hint.PK, pk.split))
         table[Capability.PDF_MERGE].insert(0, BackendFn("pikepdf", Hint.PK, pk.merge))
     except ImportError:
@@ -84,14 +90,16 @@ def _load_table() -> dict[Capability, tuple[BackendFn, ...]]:
 
     # vtracer — PNG → SVG trace
     try:
-        from .backends import vtracer_backend as vt
+        from .backends import vtracer_backend as vt  # noqa: PLC0415
+
         table[Capability.PNG_TO_SVG_TRACE].append(BackendFn("vtracer", Hint.RE, vt.trace))
     except ImportError:
         pass
 
     # wrap — PNG/JPG → SVG wrap, PNG/JPG → PDF
     try:
-        from .backends import wrap_backend as w
+        from .backends import wrap_backend as w  # noqa: PLC0415
+
         table[Capability.PNG_TO_SVG_WRAP].append(BackendFn("wrap", Hint.MU, w.png_to_svg))
         table[Capability.BITMAP_TO_PDF].append(BackendFn("wrap", Hint.MU, w.png_to_pdf))
     except ImportError:
@@ -99,7 +107,8 @@ def _load_table() -> dict[Capability, tuple[BackendFn, ...]]:
 
     # apple — macOS; module imports cleanly, functions raise at call time on non-darwin
     try:
-        from .backends import apple_backend as ap
+        from .backends import apple_backend as ap  # noqa: PLC0415
+
         table[Capability.PDF_NORMALIZE].append(BackendFn("apple", Hint.AP, ap.pdf_normalize))
         table[Capability.PDF_TO_PNG].append(BackendFn("apple", Hint.AP, ap.pdf_to_png))
         table[Capability.PDF_SPLIT].append(BackendFn("apple", Hint.AP, ap.split))
@@ -109,7 +118,8 @@ def _load_table() -> dict[Capability, tuple[BackendFn, ...]]:
 
     # cairo - optional backend for CA hint
     try:
-        from .backends import cairo_backend as c
+        from .backends import cairo_backend as c  # noqa: PLC0415
+
         table[Capability.SVG_TO_PNG].append(BackendFn("cairo", Hint.CA, c.svg_to_png))
         table[Capability.SVG_TO_PDF].append(BackendFn("cairo", Hint.CA, c.svg_to_pdf))
     except ImportError:
@@ -117,7 +127,8 @@ def _load_table() -> dict[Capability, tuple[BackendFn, ...]]:
 
     # ghostscript - optional backend for GS hint
     try:
-        from .backends import ghostscript_backend as gs
+        from .backends import ghostscript_backend as gs  # noqa: PLC0415
+
         table[Capability.PDF_TO_PNG].append(BackendFn("ghostscript", Hint.GS, gs.pdf_to_png))
         table[Capability.PDF_NORMALIZE].append(BackendFn("ghostscript", Hint.GS, gs.pdf_normalize))
     except ImportError:
@@ -131,7 +142,7 @@ _TABLE: dict[Capability, tuple[BackendFn, ...]] | None = None
 
 def capability_table() -> dict[Capability, tuple[BackendFn, ...]]:
     """Return the global dispatch table, building it on first call."""
-    global _TABLE
+    global _TABLE  # noqa: PLW0603 - module-level memoization cache
     if _TABLE is None:
         _TABLE = _load_table()
     return _TABLE

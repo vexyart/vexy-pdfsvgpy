@@ -1,9 +1,11 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/backends/resvg_backend.py
 """resvg-py backend — SVG rasterization via the usvg/resvg Rust pipeline."""
+
+# this_file: src/vexy_pdfsvgpy/backends/resvg_backend.py
+from __future__ import annotations
 
 import re
 from pathlib import Path
+from typing import Any
 
 BACKEND_NAME = "resvg"
 
@@ -16,16 +18,16 @@ def _ensure_parent(dst: Path) -> None:
 
 def _to_png_bytes(svg_path: Path | None, svg_string: str | None, width: int) -> bytes:
     """Call resvg_py, normalise return type to bytes."""
-    import resvg_py
+    import resvg_py  # noqa: PLC0415
 
-    kwargs: dict = {"width": width}
+    kwargs: dict[str, Any] = {"width": width}
     if svg_path is not None:
         kwargs["svg_path"] = str(svg_path)
     else:
         kwargs["svg_string"] = svg_string
 
     result = resvg_py.svg_to_bytes(**kwargs)
-    return bytes(result) if not isinstance(result, (bytes, bytearray)) else bytes(result)
+    return bytes(result)
 
 
 def _render(src_path: Path | None, src_string: str | None, width: int) -> bytes:

@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/backends/test_pdfium_backend.py
 """Tests for the pypdfium2 backend."""
+
+# this_file: tests/backends/test_pdfium_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -8,7 +9,7 @@ import pytest
 
 from vexy_pdfsvgpy.backends import pdfium_backend as b
 
-TESTDATA = Path(__file__).parent.parent.parent / "testdata"
+TESTDATA = Path(__file__).parent.parent / "fixtures"
 POSTER_PDF = TESTDATA / "fontlab_posters.pdf"
 PAPERCUT_PDF = TESTDATA / "papercut.pdf"
 REGULARITY_PDF = TESTDATA / "regularity.pdf"

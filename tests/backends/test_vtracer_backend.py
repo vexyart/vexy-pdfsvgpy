@@ -1,17 +1,19 @@
-from __future__ import annotations
-# this_file: tests/backends/test_vtracer_backend.py
 """Tests for vtracer_backend — PNG/JPG → SVG vectorization."""
+
+# this_file: tests/backends/test_vtracer_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 
 import pytest
-from PIL import Image
 from lxml import etree
+from PIL import Image
 
 from vexy_pdfsvgpy.backends import vtracer_backend as b
 
 try:
     from vexy_pdfsvgpy.backends import resvg_backend
+
     _RESVG_AVAILABLE = True
 except (ImportError, ModuleNotFoundError):
     _RESVG_AVAILABLE = False
@@ -33,7 +35,7 @@ def test_trace_synthetic_png(tmp_path: Path) -> None:
 
 
 def test_trace_real_fixture(tmp_path: Path) -> None:
-    tiger_svg = Path(__file__).parent.parent.parent / "testdata" / "tiger.svg"
+    tiger_svg = Path(__file__).parent.parent / "fixtures" / "tiger.svg"
     if not tiger_svg.exists():
         pytest.skip("testdata/tiger.svg not found")
     if not _RESVG_AVAILABLE:

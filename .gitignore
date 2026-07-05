@@ -92,3 +92,14 @@ external/
 testdata/
 out/
 tests/_tmp/
+
+# Test/demo output and agent/tool state (not part of the package)
+out_dir/
+test_dir/
+.omc/
+.swarm/
+.factory/
+.mad-logs.jsonl
+tea_debug.log
+# One-off migration scripts kept only for local history
+update_*.py

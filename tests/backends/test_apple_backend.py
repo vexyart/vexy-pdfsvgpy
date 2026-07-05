@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/backends/test_apple_backend.py
 """Tests for apple_backend — PDFKit + CoreGraphics (macOS only)."""
+
+# this_file: tests/backends/test_apple_backend.py
+from __future__ import annotations
 
 import sys
 from pathlib import Path
@@ -9,7 +10,7 @@ import pytest
 
 from vexy_pdfsvgpy.backends import apple_backend as b
 
-TESTDATA = Path(__file__).parent.parent.parent / "testdata"
+TESTDATA = Path(__file__).parent.parent / "fixtures"
 REGULARITY = TESTDATA / "regularity.pdf"
 PAPERCUT = TESTDATA / "papercut.pdf"
 FONTLAB = TESTDATA / "fontlab_posters.pdf"
@@ -62,6 +63,7 @@ def test_pdf_to_png(tmp_path):
     assert result == dst
     assert dst.exists()
     from PIL import Image
+
     img = Image.open(dst)
     assert abs(img.width - 1024) <= 2, f"Expected width ~1024, got {img.width}"
 

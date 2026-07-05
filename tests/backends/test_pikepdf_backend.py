@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/backends/test_pikepdf_backend.py
 """Tests for pikepdf_backend — real calls, no mocks."""
+
+# this_file: tests/backends/test_pikepdf_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -9,7 +10,7 @@ import pytest
 
 from vexy_pdfsvgpy.backends import pikepdf_backend as b
 
-TESTDATA = Path(__file__).parent.parent.parent / "testdata"
+TESTDATA = Path(__file__).parent.parent / "fixtures"
 REGULARITY = TESTDATA / "regularity.pdf"
 PAPERCUT = TESTDATA / "papercut.pdf"
 

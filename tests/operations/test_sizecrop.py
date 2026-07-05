@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/operations/test_sizecrop.py
 """Tests for operations/sizecrop.py."""
+
+# this_file: tests/operations/test_sizecrop.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -15,7 +16,7 @@ from vexy_pdfsvgpy.operations.sizecrop import (
     resolve_margins,
 )
 
-TESTDATA = Path(__file__).parent.parent.parent / "testdata"
+TESTDATA = Path(__file__).parent.parent / "fixtures"
 
 
 def test_parse_dim_wxh() -> None:
@@ -67,6 +68,7 @@ def test_apply_sizecrop_pdf_passthrough(tmp_path: Path) -> None:
     assert dst.exists()
     assert dst.read_bytes()[:4] == b"%PDF"
     import pymupdf
+
     src_doc = pymupdf.open(str(src))
     dst_doc = pymupdf.open(str(dst))
     assert len(dst_doc) == len(src_doc)
@@ -78,8 +80,11 @@ def test_apply_sizecrop_pdf_largest(tmp_path: Path) -> None:
     src = TESTDATA / "regularity.pdf"
     dst = tmp_path / "largest.pdf"
     import pymupdf
+
     src_doc = pymupdf.open(str(src))
-    sources = [(int(src_doc[i].rect.width), int(src_doc[i].rect.height)) for i in range(len(src_doc))]
+    sources = [
+        (int(src_doc[i].rect.width), int(src_doc[i].rect.height)) for i in range(len(src_doc))
+    ]
     src_doc.close()
     largest = max(sources, key=lambda wh: wh[0] * wh[1])
     opts = SizeCropOptions(dim="largest", scale="fit")
@@ -101,6 +106,7 @@ def test_apply_sizecrop_pdf_explicit_dim(tmp_path: Path) -> None:
     assert result == dst
     assert dst.exists()
     import pymupdf
+
     out_doc = pymupdf.open(str(dst))
     page_rect = out_doc[0].rect
     out_doc.close()

@@ -4,6 +4,15 @@ this_file: CHANGELOG.md
 
 # Changelog
 
+## Modernization pass (2026-07-05)
+
+- **CI/CD:** added `.github/workflows/ci.yml` (uv-based lint + strict mypy + pytest matrix on Ubuntu/macOS, Python 3.12/3.13, coverage) and `release.yml` (build + PyPI trusted publishing on `v*` tags).
+- **Tests are now self-contained:** added committed `tests/fixtures/` (tiny synthetic PDFs + small SVGs) and a `_generate.py` regenerator; repointed all test data references off the gitignored `testdata/`. The suite runs anywhere, including CI.
+- **Coverage:** added in-process CLI unit tests (`tests/test_cli_unit.py`); coverage rose to ~82% (219 tests).
+- **Lint/types:** ruff clean and strict mypy clean across `src/` and `tests/`; added per-module mypy overrides for untyped backends, `lxml-stubs`, and per-file ruff ignores for lazy test imports. Normalized module headers (docstring → `this_file` → `from __future__`). Added type hints and comments per the style guide.
+- **Packaging:** added `readme`, `keywords`, and trove classifiers to `pyproject.toml`; consolidated the dev toolchain into a PEP 735 `[dependency-groups]` dev group.
+- **Docs:** new Jekyll + Just-the-Docs site under `docs/` (backends, format grammar, CLI reference); README badges and project icon (`docs/assets/icon.png`).
+
 ## Phase 1-8 — Initial implementation (2026-04-14)
 
 - Bootstrap (`pyproject.toml`, package skeleton, smoke test).

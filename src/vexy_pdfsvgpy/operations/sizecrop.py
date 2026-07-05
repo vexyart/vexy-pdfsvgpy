@@ -1,11 +1,11 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/operations/sizecrop.py
 """Size-and-crop operations — resolve --dim, --scale, margin alignment, --crop."""
 
-from dataclasses import dataclass, field as dc_field
+# this_file: src/vexy_pdfsvgpy/operations/sizecrop.py
+from __future__ import annotations
+
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
-
 
 DimSpec = Literal["none", "largest", "first", "last"] | str  # or "WxH"
 ScaleMode = Literal["fit", "keep", "width", "height"] | int  # int for NNN percent
@@ -16,7 +16,7 @@ CropMode = Literal["all", "keep", "width", "height", "down"]
 class SizeCropOptions:
     dim: DimSpec = "none"
     scale: ScaleMode = "fit"
-    top: float | None = None    # percent; None means "auto"
+    top: float | None = None  # percent; None means "auto"
     bottom: float | None = None
     left: float | None = None
     right: float | None = None
@@ -92,9 +92,9 @@ def resolve_margins(
     """
     t = top if top is not None else 0.0
     b = bottom if bottom is not None else 0.0
-    l = left if left is not None else 0.0
+    lft = left if left is not None else 0.0
     r = right if right is not None else 0.0
-    return (t, b, l, r)
+    return (t, b, lft, r)
 
 
 def apply_sizecrop_pdf(src: Path, dst: Path, options: SizeCropOptions) -> Path:
@@ -109,9 +109,9 @@ def apply_sizecrop_pdf(src: Path, dst: Path, options: SizeCropOptions) -> Path:
         dst.write_bytes(src.read_bytes())
         return dst
     try:
-        import pymupdf
+        import pymupdf  # noqa: PLC0415
 
-        src_doc = pymupdf.open(str(src))
+        src_doc = pymupdf.open(str(src))  # type: ignore[no-untyped-call]
         try:
             sources = [
                 (int(src_doc[i].rect.width), int(src_doc[i].rect.height))
@@ -123,7 +123,7 @@ def apply_sizecrop_pdf(src: Path, dst: Path, options: SizeCropOptions) -> Path:
                 dst.write_bytes(src.read_bytes())
                 return dst
             tw, th = target
-            out = pymupdf.open()
+            out = pymupdf.open()  # type: ignore[no-untyped-call]
             for i, (sw, sh) in enumerate(sources):
                 scale = compute_scale((sw, sh), (tw, th), options.scale)
                 new_w = sw * scale
@@ -135,14 +135,14 @@ def apply_sizecrop_pdf(src: Path, dst: Path, options: SizeCropOptions) -> Path:
                 x0 = (tw - new_w) * (m_left / 100.0 if options.left is not None else 0.5)
                 y0 = (th - new_h) * (m_top / 100.0 if options.top is not None else 0.5)
                 page = out.new_page(width=tw, height=th)
-                rect = pymupdf.Rect(x0, y0, x0 + new_w, y0 + new_h)
+                rect = pymupdf.Rect(x0, y0, x0 + new_w, y0 + new_h)  # type: ignore[no-untyped-call]
                 page.show_pdf_page(rect, src_doc, i)
             dst.parent.mkdir(parents=True, exist_ok=True)
-            out.save(str(dst), garbage=4, deflate=True)
-            out.close()
+            out.save(str(dst), garbage=4, deflate=True)  # type: ignore[no-untyped-call]
+            out.close()  # type: ignore[no-untyped-call]
             return dst
         finally:
-            src_doc.close()
+            src_doc.close()  # type: ignore[no-untyped-call]
     except RuntimeError:
         raise
     except Exception as e:

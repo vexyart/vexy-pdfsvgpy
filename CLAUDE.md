@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-Greenfield. `src/vexy_pdfsvgpy/`, `tests/`, and `examples/` exist but are empty. No `pyproject.toml`, no `README.md`, no source or tests yet. A `.venv/` already exists with the Tier-1 backends pre-installed (`pymupdf`, `pypdfium2`, `pypdf`, `pikepdf`) — inspect `.venv/lib/python3.12/site-packages/` to read real installed code when verifying behavior.
+Implemented and modernized. `src/vexy_pdfsvgpy/` holds the full package (backends, dispatch, pipeline, operations, Fire CLI); `tests/` has 219 passing tests at ~82% coverage; ruff and strict mypy are clean; CI (`.github/workflows/ci.yml`) and PyPI trusted-publish release (`release.yml`) are wired. Docs are a Jekyll + Just-the-Docs site under `docs/`.
+
+Tests read small committed fixtures from `tests/fixtures/` (regenerate with `uv run python tests/fixtures/_generate.py`). The large real-world samples in `testdata/` remain gitignored and are not required to run the suite. Use `uv run pytest -q` and inspect installed backend source under `.venv/lib/python3.12/site-packages/` when verifying behavior.
+
+Known gap: multi-input composition into a single `m`/`l` document raises `NotImplementedError` in `convert()` (see `TODO.md`).
 
 Key files and dirs:
 
@@ -14,7 +18,7 @@ Key files and dirs:
 - `out/` — the demo's output directory. Gitignored. Filenames like `hello_glyphs-via-resvg@2048px.png` or `fontlab_posters-pymupdf→pymupdf.pdf` are self-describing — a quick way to see which backend pipelines actually work on real inputs.
 - `external/` — vendored upstream source for backends (`pymupdf`, `pypdfium2`, `pypdf`, `pikepdf`, `resvg-py`, `vtracer`) plus raw C source (`mupdf`) and also-rans/rejects kept for comparison only (`svglib`, `skia-python`, `svg2pdf`, `svgpathtools`, `picosvgx`, `PyMuPDF-Utilities`, `vexy-vsvg`). **Gitignored.** Read-only reference material — never edit, never import from, and don't be tempted to depend on the rejected ones.
 
-Any work on this repo starts by creating `pyproject.toml` and the package layout. Don't assume files exist — check first.
+Post-edit chain: `uv run ruff check --fix src tests && uv run ruff format src tests && uv run mypy src/vexy_pdfsvgpy && uv run pytest -q`.
 
 ## Scope (one sentence)
 

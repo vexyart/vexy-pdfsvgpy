@@ -1,16 +1,16 @@
-from __future__ import annotations
+"""File path rendering helpers for vexy-pdfsvgpy output naming."""
 
 # this_file: src/vexy_pdfsvgpy/paths.py
-
-"""File path rendering helpers for vexy-pdfsvgpy output naming."""
+from __future__ import annotations
 
 import string
 from pathlib import Path
 
-class _CheckingMap(dict):
+
+class _CheckingMap(dict[str, "str | int"]):  # values are format placeholders (text or numeric)
     """A dict subclass that records any key lookup not in the allowed set."""
 
-    def __init__(self, data: dict, *, unknown_keys: list[str]) -> None:
+    def __init__(self, data: dict[str, str | int], *, unknown_keys: list[str]) -> None:
         super().__init__(data)
         self._unknown = unknown_keys
 
@@ -73,9 +73,7 @@ def render_output(
         raise ValueError(f"Invalid template '{tmpl_str}': {exc}") from exc
 
     if unknown:
-        raise ValueError(
-            f"Unknown placeholder(s) in template '{tmpl_str}': {unknown}"
-        )
+        raise ValueError(f"Unknown placeholder(s) in template '{tmpl_str}': {unknown}")
 
     result = Path(resolved)
 
@@ -99,10 +97,7 @@ def _has_page_placeholder(template: str) -> bool:
     ``string.Formatter.parse`` yields ``(literal, field_name, format_spec,
     conversion)``; field_name for ``{page:02d}`` is simply ``"page"``.
     """
-    for _, field_name, _, _ in string.Formatter().parse(template):
-        if field_name == "page":
-            return True
-    return False
+    return any(field_name == "page" for _, field_name, _, _ in string.Formatter().parse(template))
 
 
 def parse_scale_suffix(width: int | None, dpi: int | None) -> str:

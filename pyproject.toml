@@ -2,7 +2,16 @@
 name = "vexy-pdfsvgpy"
 dynamic = ["version"]
 description = "Unified PDF/SVG/PNG conversion with zero system-library dependencies"
+readme = "README.md"
 license = { file = "LICENSE" }
+keywords = ["pdf", "svg", "png", "conversion", "pymupdf", "vtracer", "resvg"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+]
 authors = [{ name = "Adam Twardoch" }]
 requires-python = ">=3.12"
 dependencies = [
@@ -64,11 +73,43 @@ line-length = 100
 select = ["E", "F", "I", "B", "UP", "SIM", "RUF", "N", "PL"]
 ignore = ["PLR0913", "PLR2004"]
 
+[tool.ruff.lint.per-file-ignores]
+# Tests import backends lazily inside functions so a missing optional backend
+# skips one test instead of collapsing collection.
+"tests/**" = ["PLC0415"]
+# The fixture generator only runs by hand; its fitz.Rect arithmetic trips RUF005.
+"tests/fixtures/_generate.py" = ["RUF005"]
+
 [tool.mypy]
 python_version = "3.12"
 strict = true
 files = ["src/vexy_pdfsvgpy"]
 
+# Third-party backends that ship no type information (no py.typed, no stubs).
+# Silence "missing imports" so strict mode stays clean without weakening our own code.
+[[tool.mypy.overrides]]
+module = [
+    "vtracer",
+    "pypdfium2",
+    "pypdfium2.*",
+    "ghostscript",
+    "cairosvg",
+    "resvg_py",
+    "fire",
+    "Foundation",
+    "Quartz",
+]
+ignore_missing_imports = true
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra --strict-markers"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=5",
+    "ruff>=0.6",
+    "mypy>=2.1.0",
+    "lxml-stubs>=0.5.1",
+]

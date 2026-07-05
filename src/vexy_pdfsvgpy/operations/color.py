@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/operations/color.py
 """Color operations — gray, invert, vivid, bright, contrast, backdrop."""
+
+# this_file: src/vexy_pdfsvgpy/operations/color.py
+from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -10,10 +11,10 @@ from pathlib import Path
 class ColorOptions:
     gray: bool = False
     invert: bool = False
-    vivid: float | None = None      # 0.0 = no change, positive saturates
-    bright: float | None = None     # -100..100; positive brightens
-    contrast: float | None = None   # -100..100; positive contrasts
-    backdrop: str | None = None     # "#rrggbb", "#rrggbbaa", "white", "black", "dominant"
+    vivid: float | None = None  # 0.0 = no change, positive saturates
+    bright: float | None = None  # -100..100; positive brightens
+    contrast: float | None = None  # -100..100; positive contrasts
+    backdrop: str | None = None  # "#rrggbb", "#rrggbbaa", "white", "black", "dominant"
 
 
 NAMED_COLORS: dict[str, tuple[int, int, int, int]] = {
@@ -35,13 +36,14 @@ def parse_color(
     if s_low == "dominant":
         if ref_image is None:
             raise RuntimeError("[color] 'dominant' requires ref_image")
-        from PIL import Image
+        from PIL import Image  # noqa: PLC0415
 
         with Image.open(ref_image).convert("RGBA") as img:
             small = img.resize((64, 64))
             counts: dict[tuple[int, int, int, int], int] = {}
-            for p in small.getdata():
-                counts[p] = counts.get(p, 0) + 1  # type: ignore[index]
+            # getdata() returns an ImagingCore; list() makes it an iterable of pixels.
+            for p in list(small.getdata()):
+                counts[p] = counts.get(p, 0) + 1
         return max(counts.items(), key=lambda kv: kv[1])[0]
     if s_low in NAMED_COLORS:
         return NAMED_COLORS[s_low]
@@ -59,9 +61,10 @@ def parse_color(
 def apply_color_bitmap(src: Path, dst: Path, options: ColorOptions) -> Path:
     """Apply color ops to a bitmap file via Pillow. src/dst must be .png or .jpg."""
     try:
-        from PIL import Image, ImageEnhance, ImageOps
+        from PIL import Image, ImageEnhance, ImageOps  # noqa: PLC0415
 
-        with Image.open(src).convert("RGBA") as img:
+        with Image.open(src).convert("RGBA") as base:
+            img = base  # working image, reassigned as each operation is applied
             # backdrop first: composite source onto solid background
             if options.backdrop:
                 color = parse_color(options.backdrop, ref_image=src)

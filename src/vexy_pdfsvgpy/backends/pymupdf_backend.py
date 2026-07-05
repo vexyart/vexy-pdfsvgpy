@@ -1,6 +1,7 @@
-from __future__ import annotations
+"""PyMuPDF (fitz) backend — PDF rasterization, SVG export, and overlay."""
 
 # this_file: src/vexy_pdfsvgpy/backends/pymupdf_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -16,7 +17,7 @@ def _ensure_parent(dst: Path) -> None:
 def _open(src: Path, op: str) -> pymupdf.Document:
     """Open a document, wrapping errors with backend prefix."""
     try:
-        return pymupdf.open(str(src))
+        return pymupdf.open(str(src))  # type: ignore[no-untyped-call]
     except Exception as e:
         raise RuntimeError(f"[pymupdf] {op} failed: {e}") from e
 
@@ -27,13 +28,13 @@ def pdf_to_png(src: Path, dst: Path, *, page: int = 0, dpi: int = 300, alpha: bo
     doc = _open(src, "pdf_to_png")
     try:
         pix = doc[page].get_pixmap(dpi=dpi, alpha=alpha)
-        pix.save(str(dst))
+        pix.save(str(dst))  # type: ignore[no-untyped-call]
     except RuntimeError:
         raise
     except Exception as e:
         raise RuntimeError(f"[pymupdf] pdf_to_png failed: {e}") from e
     finally:
-        doc.close()
+        doc.close()  # type: ignore[no-untyped-call]
     return dst
 
 
@@ -50,14 +51,14 @@ def pdf_to_svg(src: Path, dst: Path, *, page: int = 0, text_as: str | None = Non
         # "fonts" map to text_as_path=False (pymupdf emits <text> referencing fonts
         # and renderers fall back automatically when fonts are unavailable).
         is_text_as_path = text_as == "paths"
-        svg = doc[page].get_svg_image(text_as_path=is_text_as_path)
+        svg = doc[page].get_svg_image(text_as_path=is_text_as_path)  # type: ignore[no-untyped-call]
         dst.write_text(svg, encoding="utf-8")
     except RuntimeError:
         raise
     except Exception as e:
         raise RuntimeError(f"[pymupdf] pdf_to_svg failed: {e}") from e
     finally:
-        doc.close()
+        doc.close()  # type: ignore[no-untyped-call]
     return dst
 
 
@@ -66,14 +67,14 @@ def svg_to_pdf(src: Path, dst: Path) -> Path:
     _ensure_parent(dst)
     doc = _open(src, "svg_to_pdf")
     try:
-        pdf_bytes = doc.convert_to_pdf()
+        pdf_bytes = doc.convert_to_pdf()  # type: ignore[no-untyped-call]
         dst.write_bytes(pdf_bytes)
     except RuntimeError:
         raise
     except Exception as e:
         raise RuntimeError(f"[pymupdf] svg_to_pdf failed: {e}") from e
     finally:
-        doc.close()
+        doc.close()  # type: ignore[no-untyped-call]
     return dst
 
 
@@ -83,13 +84,13 @@ def svg_to_png(src: Path, dst: Path, *, dpi: int = 300, alpha: bool = True) -> P
     doc = _open(src, "svg_to_png")
     try:
         pix = doc[0].get_pixmap(dpi=dpi, alpha=alpha)
-        pix.save(str(dst))
+        pix.save(str(dst))  # type: ignore[no-untyped-call]
     except RuntimeError:
         raise
     except Exception as e:
         raise RuntimeError(f"[pymupdf] svg_to_png failed: {e}") from e
     finally:
-        doc.close()
+        doc.close()  # type: ignore[no-untyped-call]
     return dst
 
 
@@ -98,13 +99,13 @@ def pdf_normalize(src: Path, dst: Path) -> Path:
     _ensure_parent(dst)
     doc = _open(src, "pdf_normalize")
     try:
-        doc.save(str(dst), clean=True, deflate=True, garbage=4)
+        doc.save(str(dst), clean=True, deflate=True, garbage=4)  # type: ignore[no-untyped-call]
     except RuntimeError:
         raise
     except Exception as e:
         raise RuntimeError(f"[pymupdf] pdf_normalize failed: {e}") from e
     finally:
-        doc.close()
+        doc.close()  # type: ignore[no-untyped-call]
     return dst
 
 
@@ -114,14 +115,14 @@ def svg_normalize(src: Path, dst: Path, *, page: int = 0, text_as: str | None = 
     doc = _open(src, "svg_normalize")
     try:
         is_text_as_path = text_as == "paths"
-        svg = doc[page].get_svg_image(text_as_path=is_text_as_path)
+        svg = doc[page].get_svg_image(text_as_path=is_text_as_path)  # type: ignore[no-untyped-call]
         dst.write_text(svg, encoding="utf-8")
     except RuntimeError:
         raise
     except Exception as e:
         raise RuntimeError(f"[pymupdf] svg_normalize failed: {e}") from e
     finally:
-        doc.close()
+        doc.close()  # type: ignore[no-untyped-call]
     return dst
 
 
@@ -135,7 +136,7 @@ def pdf_page_count(src: Path) -> int:
     except Exception as e:
         raise RuntimeError(f"[pymupdf] pdf_page_count failed: {e}") from e
     finally:
-        doc.close()
+        doc.close()  # type: ignore[no-untyped-call]
 
 
 def pdf_page_size(src: Path, page: int = 0) -> tuple[float, float]:
@@ -149,4 +150,4 @@ def pdf_page_size(src: Path, page: int = 0) -> tuple[float, float]:
     except Exception as e:
         raise RuntimeError(f"[pymupdf] pdf_page_size failed: {e}") from e
     finally:
-        doc.close()
+        doc.close()  # type: ignore[no-untyped-call]

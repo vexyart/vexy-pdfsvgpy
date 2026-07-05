@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/backends/test_resvg_backend.py
 """Tests for resvg_backend — real resvg_py calls, no mocks."""
+
+# this_file: tests/backends/test_resvg_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -9,7 +10,7 @@ from PIL import Image
 
 from vexy_pdfsvgpy.backends import resvg_backend as b
 
-TESTDATA = Path(__file__).parent.parent.parent / "testdata"
+TESTDATA = Path(__file__).parent.parent / "fixtures"
 TIGER = TESTDATA / "tiger.svg"
 HELLO = TESTDATA / "hello_glyphs.svg"
 INITIAL = TESTDATA / "initial.svg"

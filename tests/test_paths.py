@@ -1,15 +1,13 @@
-from __future__ import annotations
+"""Tests for src/vexy_pdfsvgpy/paths.py"""
 
 # this_file: tests/test_paths.py
-
-"""Tests for src/vexy_pdfsvgpy/paths.py"""
+from __future__ import annotations
 
 from pathlib import Path
 
 import pytest
 
 from vexy_pdfsvgpy.paths import ensure_parent, parse_scale_suffix, render_output
-
 
 # ---------------------------------------------------------------------------
 # render_output — basic placeholder substitution
@@ -42,17 +40,13 @@ def test_render_backend_scale() -> None:
 
 def test_autopagination_pad2() -> None:
     """total_pages=10 → pad=2, page 3 → -p03."""
-    result = render_output(
-        "out/{stem}.{ext}", stem="doc", page=3, total_pages=10, ext="pdf"
-    )
+    result = render_output("out/{stem}.{ext}", stem="doc", page=3, total_pages=10, ext="pdf")
     assert result == Path("out/doc-p03.pdf"), result
 
 
 def test_autopagination_pad3() -> None:
     """total_pages=100 + page=5 → -p005."""
-    result = render_output(
-        "out/{stem}.{ext}", stem="doc", page=5, total_pages=100, ext="pdf"
-    )
+    result = render_output("out/{stem}.{ext}", stem="doc", page=5, total_pages=100, ext="pdf")
     assert result == Path("out/doc-p005.pdf"), result
 
 
@@ -68,16 +62,12 @@ def test_autopagination_single_page_no_suffix() -> None:
 
 
 def test_explicit_page_suppresses_autopagination() -> None:
-    result = render_output(
-        "{stem}-{page:03d}.{ext}", stem="doc", page=3, total_pages=10, ext="pdf"
-    )
+    result = render_output("{stem}-{page:03d}.{ext}", stem="doc", page=3, total_pages=10, ext="pdf")
     assert result == Path("doc-003.pdf"), result
 
 
 def test_explicit_page_plain_suppresses_autopagination() -> None:
-    result = render_output(
-        "{stem}-{page}.{ext}", stem="doc", page=7, total_pages=50, ext="svg"
-    )
+    result = render_output("{stem}-{page}.{ext}", stem="doc", page=7, total_pages=50, ext="svg")
     assert result == Path("doc-7.svg"), result
 
 
@@ -171,9 +161,7 @@ def test_ext_leading_dot_stripped() -> None:
 
 def test_path_object_template() -> None:
     """template may be a Path object."""
-    result = render_output(
-        Path("out/{stem}.{ext}"), stem="logo", page=1, ext="svg"
-    )
+    result = render_output(Path("out/{stem}.{ext}"), stem="logo", page=1, ext="svg")
     assert result == Path("out/logo.svg"), result
 
 

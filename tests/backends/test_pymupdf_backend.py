@@ -1,6 +1,5 @@
-from __future__ import annotations
-
 # this_file: tests/backends/test_pymupdf_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -9,7 +8,7 @@ from PIL import Image
 
 from vexy_pdfsvgpy.backends import pymupdf_backend as b
 
-TESTDATA = Path(__file__).parent.parent.parent / "testdata"
+TESTDATA = Path(__file__).parent.parent / "fixtures"
 
 
 def test_pdf_page_count() -> None:
@@ -83,6 +82,7 @@ def test_svg_normalize(tmp_path: Path) -> None:
     content = dst.read_text(encoding="utf-8")
     assert "<svg" in content
     from lxml import etree
+
     etree.fromstring(content.encode("utf-8"))
 
 

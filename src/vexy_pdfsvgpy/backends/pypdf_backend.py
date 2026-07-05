@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/backends/pypdf_backend.py
 """pypdf backend — pure-Python PDF split and merge."""
+
+# this_file: src/vexy_pdfsvgpy/backends/pypdf_backend.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -14,7 +15,7 @@ def split(src: Path, out_dir: Path, *, stem: str | None = None) -> list[Path]:
     `src.stem` and `pad = max(2, len(str(n_pages)))`.
     """
     try:
-        from pypdf import PdfReader, PdfWriter
+        from pypdf import PdfReader, PdfWriter  # noqa: PLC0415
     except Exception as e:
         raise RuntimeError(f"[pypdf] split failed: {e}") from e
 
@@ -43,7 +44,7 @@ def split(src: Path, out_dir: Path, *, stem: str | None = None) -> list[Path]:
 def merge(srcs: list[Path], dst: Path) -> Path:
     """Merge a list of PDFs into one. Preserves page order."""
     try:
-        from pypdf import PdfReader, PdfWriter
+        from pypdf import PdfReader, PdfWriter  # noqa: PLC0415
     except Exception as e:
         raise RuntimeError(f"[pypdf] merge failed: {e}") from e
 
@@ -67,7 +68,8 @@ def merge(srcs: list[Path], dst: Path) -> Path:
 def pdf_page_count(src: Path) -> int:
     """Return the number of pages in a PDF."""
     try:
-        from pypdf import PdfReader
+        from pypdf import PdfReader  # noqa: PLC0415
+
         return len(PdfReader(str(src)).pages)
     except Exception as e:
         raise RuntimeError(f"[pypdf] pdf_page_count failed: {e}") from e

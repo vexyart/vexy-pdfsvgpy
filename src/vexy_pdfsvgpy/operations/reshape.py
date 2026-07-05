@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/operations/reshape.py
 """Reshape operations: pages ↔ documents, layers ↔ documents."""
+
+# this_file: src/vexy_pdfsvgpy/operations/reshape.py
+from __future__ import annotations
 
 import copy
 from pathlib import Path
@@ -16,13 +17,15 @@ def pages2docs_pdf(src: Path, out_dir: Path, *, stem: str | None = None) -> list
 
     Filename convention: {stem}-page-{i+1:0{pad}d}.pdf
     """
-    from ..backends import pikepdf_backend
+    from ..backends import pikepdf_backend  # noqa: PLC0415
+
     return pikepdf_backend.split(src, out_dir, stem=stem)
 
 
 def docs2pages_pdf(srcs: list[Path], dst: Path) -> Path:
     """Merge single-page (or multi-page) PDFs into one multi-page PDF. Lossless via pikepdf."""
-    from ..backends import pikepdf_backend
+    from ..backends import pikepdf_backend  # noqa: PLC0415
+
     return pikepdf_backend.merge(srcs, dst)
 
 
@@ -36,24 +39,25 @@ def docs2layers_pdf(srcs: list[Path], dst: Path, *, labels: list[str] | None = N
     `labels` — optional list of layer names; defaults to `Layer 1`, `Layer 2`, etc.
     """
     try:
-        import pymupdf
-        out = pymupdf.open()
-        src_docs = [pymupdf.open(str(s)) for s in srcs]
+        import pymupdf  # noqa: PLC0415
+
+        out = pymupdf.open()  # type: ignore[no-untyped-call]
+        src_docs = [pymupdf.open(str(s)) for s in srcs]  # type: ignore[no-untyped-call]
         try:
             first = src_docs[0]
             rect = first[0].rect
             page = out.new_page(width=rect.width, height=rect.height)
             effective_labels = labels or [f"Layer {i + 1}" for i in range(len(srcs))]
             for src_doc, label in zip(src_docs, effective_labels, strict=False):
-                ocg_xref = out.add_ocg(label, on=True)
+                ocg_xref = out.add_ocg(label, on=True)  # type: ignore[no-untyped-call]
                 page.show_pdf_page(page.rect, src_doc, 0, oc=ocg_xref)
             dst.parent.mkdir(parents=True, exist_ok=True)
-            out.save(str(dst), garbage=4, deflate=True)
+            out.save(str(dst), garbage=4, deflate=True)  # type: ignore[no-untyped-call]
             return dst
         finally:
             for s in src_docs:
-                s.close()
-            out.close()
+                s.close()  # type: ignore[no-untyped-call]
+            out.close()  # type: ignore[no-untyped-call]
     except Exception as e:
         raise RuntimeError(f"[reshape] docs2layers_pdf failed: {e}") from e
 
@@ -67,7 +71,8 @@ def docs2layers_svg(srcs: list[Path], dst: Path, *, labels: list[str] | None = N
     the first source.
     """
     try:
-        from lxml import etree
+        from lxml import etree  # noqa: PLC0415
+
         roots = [etree.parse(str(s)).getroot() for s in srcs]
         first = roots[0]
         width = first.get("width", "800")
@@ -75,7 +80,7 @@ def docs2layers_svg(srcs: list[Path], dst: Path, *, labels: list[str] | None = N
         viewbox = first.get("viewBox", f"0 0 {width} {height}")
 
         nsmap = {None: NS_SVG, "inkscape": NS_INKSCAPE}
-        out = etree.Element(f"{{{NS_SVG}}}svg", nsmap=nsmap)
+        out = etree.Element(f"{{{NS_SVG}}}svg", nsmap=nsmap)  # type: ignore[arg-type]
         out.set("width", width)
         out.set("height", height)
         out.set("viewBox", viewbox)
@@ -90,7 +95,9 @@ def docs2layers_svg(srcs: list[Path], dst: Path, *, labels: list[str] | None = N
                 g.append(copy.deepcopy(child))
 
         dst.parent.mkdir(parents=True, exist_ok=True)
-        dst.write_bytes(etree.tostring(out, xml_declaration=True, encoding="utf-8", pretty_print=True))
+        dst.write_bytes(
+            etree.tostring(out, xml_declaration=True, encoding="utf-8", pretty_print=True)
+        )
         return dst
     except RuntimeError:
         raise
@@ -105,7 +112,8 @@ def layers2docs_svg(src: Path, out_dir: Path) -> list[Path]:
     only the children of one layer group.
     """
     try:
-        from lxml import etree
+        from lxml import etree  # noqa: PLC0415
+
         tree = etree.parse(str(src))
         root = tree.getroot()
 
@@ -124,14 +132,16 @@ def layers2docs_svg(src: Path, out_dir: Path) -> list[Path]:
         for i, layer in enumerate(layers):
             label = layer.get(_LABEL_ATTR) or layer.get("id") or str(i + 1)
             safe_label = label.replace(" ", "_").replace("/", "-")
-            out_svg = etree.Element(f"{{{NS_SVG}}}svg", nsmap=nsmap)
+            out_svg = etree.Element(f"{{{NS_SVG}}}svg", nsmap=nsmap)  # type: ignore[arg-type]
             out_svg.set("width", width)
             out_svg.set("height", height)
             out_svg.set("viewBox", viewbox)
             for child in layer:
                 out_svg.append(copy.deepcopy(child))
             dst = out_dir / f"{src.stem}-{safe_label}.svg"
-            dst.write_bytes(etree.tostring(out_svg, xml_declaration=True, encoding="utf-8", pretty_print=True))
+            dst.write_bytes(
+                etree.tostring(out_svg, xml_declaration=True, encoding="utf-8", pretty_print=True)
+            )
             outputs.append(dst)
 
         return outputs

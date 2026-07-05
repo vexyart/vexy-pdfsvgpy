@@ -1,9 +1,11 @@
-from __future__ import annotations
-# this_file: tests/backends/test_wrap_backend.py
 """Tests for wrap_backend — bitmap-to-SVG/PDF wrapping."""
 
-import pytest
+# this_file: tests/backends/test_wrap_backend.py
+from __future__ import annotations
+
 from pathlib import Path
+
+import pytest
 from PIL import Image
 
 
@@ -107,12 +109,12 @@ def test_bitmap_to_svg_auto_mime(tmp_path: Path) -> None:
     png_src = _make_png(tmp_path / "img.png")
     png_dst = tmp_path / "png_out.svg"
     b.bitmap_to_svg(png_src, png_dst)
-    assert 'data:image/png;base64,' in png_dst.read_text()
+    assert "data:image/png;base64," in png_dst.read_text()
 
     jpg_src = _make_jpg(tmp_path / "img.jpg")
     jpg_dst = tmp_path / "jpg_out.svg"
     b.bitmap_to_svg(jpg_src, jpg_dst)
-    assert 'data:image/jpeg;base64,' in jpg_dst.read_text()
+    assert "data:image/jpeg;base64," in jpg_dst.read_text()
 
 
 def test_bitmap_to_svg_unknown_ext(tmp_path: Path) -> None:

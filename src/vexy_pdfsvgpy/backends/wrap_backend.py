@@ -1,11 +1,12 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/backends/wrap_backend.py
 """Wrap backend — embed bitmaps in minimal SVG/PDF containers.
 
 This is the 'no-trace' fallback: instead of vectorizing, we wrap the
 raster in a thin vector envelope. Useful when vtracer would be overkill
 or produce garbage output (e.g. photographs).
 """
+
+# this_file: src/vexy_pdfsvgpy/backends/wrap_backend.py
+from __future__ import annotations
 
 import base64
 from pathlib import Path
@@ -28,7 +29,7 @@ def bitmap_to_svg(src: Path, dst: Path, *, mime: str | None = None) -> Path:
             }.get(ext)
             if mime is None:
                 raise RuntimeError(f"[wrap] unknown bitmap ext: {ext}")
-        from PIL import Image
+        from PIL import Image  # noqa: PLC0415
 
         with Image.open(src) as img:
             w, h = img.size
@@ -63,13 +64,13 @@ def jpg_to_svg(src: Path, dst: Path) -> Path:
 def png_to_pdf(src: Path, dst: Path) -> Path:
     """Wrap a PNG into a PDF via pymupdf direct open."""
     try:
-        import pymupdf
+        import pymupdf  # noqa: PLC0415
 
-        doc = pymupdf.open(str(src))
+        doc = pymupdf.open(str(src))  # type: ignore[no-untyped-call]
         try:
-            pdf_bytes = doc.convert_to_pdf()
+            pdf_bytes = doc.convert_to_pdf()  # type: ignore[no-untyped-call]
         finally:
-            doc.close()
+            doc.close()  # type: ignore[no-untyped-call]
         dst.parent.mkdir(parents=True, exist_ok=True)
         dst.write_bytes(pdf_bytes)
         return dst
@@ -80,13 +81,13 @@ def png_to_pdf(src: Path, dst: Path) -> Path:
 def jpg_to_pdf(src: Path, dst: Path) -> Path:
     """Wrap a JPG into a PDF via pymupdf direct open."""
     try:
-        import pymupdf
+        import pymupdf  # noqa: PLC0415
 
-        doc = pymupdf.open(str(src))
+        doc = pymupdf.open(str(src))  # type: ignore[no-untyped-call]
         try:
-            pdf_bytes = doc.convert_to_pdf()
+            pdf_bytes = doc.convert_to_pdf()  # type: ignore[no-untyped-call]
         finally:
-            doc.close()
+            doc.close()  # type: ignore[no-untyped-call]
         dst.parent.mkdir(parents=True, exist_ok=True)
         dst.write_bytes(pdf_bytes)
         return dst

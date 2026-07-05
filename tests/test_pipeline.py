@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/test_pipeline.py
 """Tests for pipeline.py — plan() and execute()."""
+
+# this_file: tests/test_pipeline.py
+from __future__ import annotations
 
 from pathlib import Path
 
@@ -11,7 +12,7 @@ from vexy_pdfsvgpy.errors import BackendFailure, UnsupportedConversion
 from vexy_pdfsvgpy.pipeline import execute, plan
 from vexy_pdfsvgpy.types import FormatSpec
 
-TESTDATA = Path(__file__).parent.parent / "testdata"
+TESTDATA = Path(__file__).parent / "fixtures"
 
 
 def test_plan_pdf_to_png() -> None:
@@ -45,7 +46,6 @@ def test_execute_pdf_to_png(tmp_path: Path) -> None:
     assert result == dst
     assert dst.exists() and dst.stat().st_size > 0
     # Verify it's a valid PNG
-    import struct
     header = dst.read_bytes()[:8]
     assert header == b"\x89PNG\r\n\x1a\n", "output is not a PNG"
 

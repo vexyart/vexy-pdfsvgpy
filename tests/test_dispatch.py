@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/test_dispatch.py
 """Tests for dispatch.py — capability table and resolve()."""
+
+# this_file: tests/test_dispatch.py
+from __future__ import annotations
 
 import pytest
 
@@ -58,10 +59,13 @@ def test_hint_priority_ap_first() -> None:
 
 def test_resolve_unsupported_raises() -> None:
     import vexy_pdfsvgpy.dispatch as d
+
     # Temporarily clear a capability
     original = d._TABLE
-    d._TABLE = {c: () if c == Capability.SVG_NORMALIZE else v
-                for c, v in (d._TABLE or d._load_table()).items()}
+    d._TABLE = {
+        c: () if c == Capability.SVG_NORMALIZE else v
+        for c, v in (d._TABLE or d._load_table()).items()
+    }
     try:
         with pytest.raises(UnsupportedConversion, match="svg_normalize"):
             resolve(Capability.SVG_NORMALIZE)

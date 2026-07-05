@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: src/vexy_pdfsvgpy/pipeline.py
 """Pipeline planning and execution for format conversions."""
+
+# this_file: src/vexy_pdfsvgpy/pipeline.py
+from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path

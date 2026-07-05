@@ -1,6 +1,7 @@
-from __future__ import annotations
-# this_file: tests/operations/test_regularize.py
 """Tests for operations/regularize.py."""
+
+# this_file: tests/operations/test_regularize.py
+from __future__ import annotations
 
 import platform
 from pathlib import Path
@@ -9,7 +10,7 @@ import pytest
 
 from vexy_pdfsvgpy.operations.regularize import regularize_pdf, regularize_svg
 
-TESTDATA = Path(__file__).parent.parent.parent / "testdata"
+TESTDATA = Path(__file__).parent.parent / "fixtures"
 
 
 def test_regularize_pdf_pymupdf(tmp_path: Path) -> None:
@@ -22,6 +23,7 @@ def test_regularize_pdf_pymupdf(tmp_path: Path) -> None:
     assert content[:4] == b"%PDF"
     # page count preserved
     import pymupdf
+
     src_doc = pymupdf.open(str(src))
     dst_doc = pymupdf.open(str(dst))
     assert len(dst_doc) == len(src_doc)
@@ -36,6 +38,7 @@ def test_regularize_svg_pymupdf(tmp_path: Path) -> None:
     assert result == dst
     assert dst.exists()
     from lxml import etree
+
     tree = etree.parse(str(dst))
     root = tree.getroot()
     assert "svg" in root.tag.lower()

@@ -1,5 +1,6 @@
-# this_file: tests/test_smoke.py
 """Bootstrap smoke test."""
+
+# this_file: tests/test_smoke.py
 from __future__ import annotations
 
 import vexy_pdfsvgpy

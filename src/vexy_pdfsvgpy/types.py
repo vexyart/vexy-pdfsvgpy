@@ -1,5 +1,6 @@
 # this_file: src/vexy_pdfsvgpy/types.py
 """Format grammar types: FormatSpec, Packaging, Content, Hint, Hints."""
+
 from __future__ import annotations
 
 from collections.abc import Iterable, Sequence
@@ -30,7 +31,7 @@ class Packaging(StrEnum):
 
 
 class Content(StrEnum):
-    O = "o"  # outlines / text-as-path (default for vector)
+    O = "o"  # noqa: E741 - public enum member; outlines / text-as-path (default for vector)
     T = "t"  # text with embedded fonts
     B = "b"  # bitmap-only
 
@@ -162,8 +163,7 @@ class FormatSpec:
         }
         if suffix not in mapping:
             raise InvalidInput(
-                f"Cannot infer format from extension {suffix!r}; "
-                f"expected one of {sorted(mapping)}"
+                f"Cannot infer format from extension {suffix!r}; expected one of {sorted(mapping)}"
             )
         return cls.parse(mapping[suffix])
 
@@ -229,10 +229,7 @@ class Hints:
             return cls()
 
         tokens: Iterable[str | Hint]
-        if isinstance(s, str):
-            tokens = [t.strip() for t in s.split(",") if t.strip()]
-        else:
-            tokens = s
+        tokens = [t.strip() for t in s.split(",") if t.strip()] if isinstance(s, str) else s
 
         prefs: list[Hint] = []
         for token in tokens:
