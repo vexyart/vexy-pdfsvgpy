@@ -9,6 +9,7 @@
 Run:
     uv run examples/convert_coupon.py
 """
+
 from __future__ import annotations
 
 import tempfile

@@ -5,6 +5,7 @@
 # ///
 # this_file: examples/trace_logo.py
 """Rasterize an SVG logo, then vectorize the result via vtracer."""
+
 from __future__ import annotations
 
 import tempfile

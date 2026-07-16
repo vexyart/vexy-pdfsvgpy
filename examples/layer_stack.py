@@ -5,6 +5,7 @@
 # ///
 # this_file: examples/layer_stack.py
 """Stack multiple SVGs into a layered SVG and a layered PDF."""
+
 from __future__ import annotations
 
 import tempfile

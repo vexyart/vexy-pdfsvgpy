@@ -5,6 +5,7 @@
 # ///
 # this_file: examples/regularize_batch.py
 """Regularize (canonicalize) every fixture in testdata/ and report sizes."""
+
 from __future__ import annotations
 
 import tempfile
