@@ -7,12 +7,18 @@ license = { file = "LICENSE" }
 keywords = ["pdf", "svg", "png", "conversion", "pymupdf", "vtracer", "resvg"]
 classifiers = [
     "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+    "Typing :: Typed",
 ]
-authors = [{ name = "Adam Twardoch" }]
+authors = [{ name = "Adam Twardoch", email = "adam+github@twardoch.com" }]
 requires-python = ">=3.12"
 dependencies = [
     "pymupdf",
@@ -42,6 +48,13 @@ all = [
     "vexy-pdfsvgpy[ghostscript]",
 ]
 
+[project.urls]
+Documentation = "https://vexy.dev/vexy-pdfsvgpy/"
+Homepage = "https://github.com/vexyart/vexy-pdfsvgpy"
+Repository = "https://github.com/vexyart/vexy-pdfsvgpy"
+Issues = "https://github.com/vexyart/vexy-pdfsvgpy/issues"
+Changelog = "https://github.com/vexyart/vexy-pdfsvgpy/blob/main/CHANGELOG.md"
+
 [project.scripts]
 vexy-pdfsvgpy = "vexy_pdfsvgpy.cli:main"
 
@@ -58,6 +71,16 @@ version-file = "src/vexy_pdfsvgpy/_version.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/vexy_pdfsvgpy"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src/vexy_pdfsvgpy",
+    "/tests",
+    "/README.md",
+    "/CHANGELOG.md",
+    "/LICENSE",
+    "/pyproject.toml",
+]
 
 [tool.hatch.envs.default]
 dependencies = ["pytest", "pytest-cov", "mypy", "ruff"]

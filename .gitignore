@@ -103,3 +103,9 @@ test_dir/
 tea_debug.log
 # One-off migration scripts kept only for local history
 update_*.py
+
+# Docs build output lives in docs/ (committed); local site/ previews are not
+site/
+node_modules/
+# hatch-vcs version file
+src/vexy_pdfsvgpy/_version.py

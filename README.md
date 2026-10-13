@@ -10,9 +10,9 @@ this_file: README.md
 
 Unified Python API and CLI for PDF ⇄ SVG ⇄ PNG/JPG conversion — pure-pip, no Cairo, no Poppler, no system libraries.
 
-<img src="docs/assets/icon.png" alt="One convert() call, no system libraries" width="260">
+<img src="src_docs/md/assets/icon.png" alt="One convert() call, no system libraries" width="260">
 
-Full documentation: **https://vexyart.github.io/vexy-pdfsvgpy/**
+**Documentation:** https://vexy.dev/vexy-pdfsvgpy/
 
 ## Install
 
@@ -59,7 +59,7 @@ vexy-pdfsvgpy regularize --input messy.pdf --output clean.pdf
 
 ## Format grammar
 
-Format specs follow `{format}-{packaging}{content}`. Either qualifier can be omitted when equal to the default.
+Format specs follow `{format}_{packaging}{content}`. Either qualifier can be omitted when equal to the default.
 
 | Qualifier | Codes | Meaning |
 |-----------|-------|---------|
@@ -69,7 +69,7 @@ Format specs follow `{format}-{packaging}{content}`. Either qualifier can be omi
 
 Examples: `pdf_mo` = multi-page PDF with outline text. `svg_lt` = layered SVG with preserved text. `png` = `png_d`.
 
-**Note:** PDF → SVG is inherently lossy. Text is converted to paths (`text_as_path=True`). Semantic fidelity is not guaranteed.
+**Note:** PDF → SVG is inherently lossy. By default text stays as `<text>` elements; pass `text_as="paths"` (CLI: `--text_as paths`) to convert it to outlines. Semantic fidelity is not guaranteed.
 
 ## Backends
 
