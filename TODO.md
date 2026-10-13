@@ -4,6 +4,13 @@ this_file: TODO.md
 
 # vexy-pdfsvgpy — Task list
 
+## Pending: first PyPI release (2026-10-13)
+
+- [ ] Upload v0.0.6 to PyPI. Tag `v0.0.6` is pushed and `dist/` was built, but PyPI refused
+      the upload with `429 Too many new projects created` (a per-account limit on creating
+      new projects). Retry with `uv publish --check-url https://pypi.org/simple/ dist/*`,
+      or rebuild from the tag with `./build.sh package` first.
+
 ## Post-modernization backlog (2026-07-05)
 
 Larger ideas surfaced during the modernization pass; none block the current release.
