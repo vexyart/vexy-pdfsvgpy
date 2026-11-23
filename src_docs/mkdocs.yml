@@ -1,15 +1,15 @@
 # this_file: src_docs/mkdocs.yml
-site_name: vexy-pdfsvgpy
+site_name: PDF, SVG and bitmap conversion
 site_description: Unified PDF/SVG/PNG conversion with zero system-library dependencies
 site_url: https://vexy.dev/vexy-pdfsvgpy/
 repo_url: https://github.com/vexyart/vexy-pdfsvgpy
-repo_name: vexyart/vexy-pdfsvgpy
+repo_name: GitHub
 edit_uri: edit/main/src_docs/md/
 docs_dir: md
 site_dir: ../docs
 use_directory_urls: true
 theme:
-  name: materialx
+  name: fly-january
   features:
     - navigation.sections
     - navigation.top
@@ -20,12 +20,8 @@ theme:
     - content.code.annotate
   palette:
     - scheme: default
-      primary: indigo
-      accent: indigo
       toggle: {icon: material/brightness-7, name: Switch to dark mode}
     - scheme: slate
-      primary: indigo
-      accent: indigo
       toggle: {icon: material/brightness-4, name: Switch to light mode}
 markdown_extensions:
   - abbr
@@ -46,6 +42,12 @@ markdown_extensions:
   - pymdownx.tasklist: {custom_checkbox: true}
 plugins:
   - search
+  - fly
+extra:
+  fly:
+    chrome: none
+    hue: indigo
+    links: accent
 nav:
   - Home: index.md
   - Getting started:

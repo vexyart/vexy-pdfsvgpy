@@ -1,4 +1,4 @@
-# vexy-pdfsvgpy
+# PDF, SVG and bitmap conversion {#vexy-pdfsvgpy}
 
 `vexy-pdfsvgpy` is a Python library and command-line tool that converts files between PDF, SVG, PNG and JPG. You call one function, `convert()`, or one command, `vexy-pdfsvgpy convert`. The extension of the output file decides the target format.
 

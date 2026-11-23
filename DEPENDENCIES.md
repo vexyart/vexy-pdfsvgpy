@@ -31,6 +31,10 @@ this_file: DEPENDENCIES.md
 | `mypy` | static type checks |
 | `ruff` | lint and format |
 
+## Documentation
+
+`src_docs/build.sh` installs ProperDocs and the fly-january 0.1.1 theme in an isolated `uvx` environment.
+
 ## Forbidden / rejected
 
 See `SPEC.md` §2. Explicit reject list: `cairosvg`, `pdf2image`, `svglib`, `reportlab` (as PDF renderer), `skia-python`, `pdfkit`, `weasyprint`, anything needing Cairo / Poppler / Ghostscript / libcairo.

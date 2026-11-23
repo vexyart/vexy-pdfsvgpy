@@ -34,16 +34,21 @@
     
     
       
-        <title>Troubleshooting - vexy-pdfsvgpy</title>
+        <title>Troubleshooting - PDF, SVG and bitmap conversion</title>
       
     
     
+  
       <link rel="stylesheet" href="../assets/stylesheets/main.314bbef5.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a45159b5.min.css">
       
     
+  <link rel="stylesheet" data-fly-photoswipe href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/photoswipe.css"
+      integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx/1oA/0l8ysE" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/fly/fly.css?v=24c03d88bb">
+
     
 
     
@@ -67,6 +72,19 @@
 
     
     
+  
+  <script>try{if(sessionStorage.getItem("fly-l2")==="in"){document.documentElement.dataset.flyL2="in";sessionStorage.removeItem("fly-l2")}}catch(e){}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0&icon_names=arrow_back,arrow_forward,dark_mode,light_mode&display=block">
+  <script>try{document.fonts.load('20px "Material Symbols Outlined"',"arrow_backarrow_forwarddark_modelight_mode").then(function(f){if(f.length)document.documentElement.classList.add("fly-msym")})}catch(e){}</script>
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/cmv5add.css" data-fly-font>
+  <link rel="stylesheet" href="https://use.typekit.net/cna4jfp.css" data-fly-font>
+  <link rel="stylesheet" href="https://use.typekit.net/wck5koo.css" data-fly-font>
+
   </head>
   
   
@@ -79,7 +97,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" data-mx-topbar="glass">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" data-mx-topbar="glass" class="fly-margin-left fly-chrome-none" data-fly-hue="indigo" data-fly-links="accent">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -100,13 +118,14 @@
     </div>
     
     
+  
       
 
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="vexy-pdfsvgpy" class="md-header__button md-logo" aria-label="vexy-pdfsvgpy" data-md-component="logo">
+    <a href=".." title="PDF, SVG and bitmap conversion" class="md-header__button md-logo" aria-label="PDF, SVG and bitmap conversion" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -120,7 +139,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            vexy-pdfsvgpy
+            PDF, SVG and bitmap conversion
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -212,7 +231,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    vexyart/vexy-pdfsvgpy
+    GitHub
   </div>
 </a>
       </div>
@@ -221,6 +240,7 @@
   
 </header>
     
+
     <div class="md-container" data-md-component="container">
       
       
@@ -242,13 +262,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="vexy-pdfsvgpy" class="md-nav__button md-logo" aria-label="vexy-pdfsvgpy" data-md-component="logo">
+    <a href=".." title="PDF, SVG and bitmap conversion" class="md-nav__button md-logo" aria-label="PDF, SVG and bitmap conversion" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    vexy-pdfsvgpy
+    PDF, SVG and bitmap conversion
   </label>
   
     <div class="md-nav__source">
@@ -258,7 +278,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
-    vexyart/vexy-pdfsvgpy
+    GitHub
   </div>
 </a>
     </div>
@@ -271,12 +291,13 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
         
   
   
-  <span class="md-ellipsis">
+  <span class="md-ellipsis" title="Home">
     
   
     Home
@@ -294,6 +315,7 @@
     
       
       
+  
   
   
   
@@ -319,7 +341,7 @@
             
   
   
-  <span class="md-ellipsis">
+  <span class="md-ellipsis" title="Getting started">
     
   
     Getting started
@@ -350,6 +372,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../installation/" class="md-nav__link">
         
@@ -374,6 +397,7 @@
             
               
                 
+  
   
   
   
@@ -413,6 +437,7 @@
   
   
   
+  
     
     
     
@@ -434,7 +459,7 @@
             
   
   
-  <span class="md-ellipsis">
+  <span class="md-ellipsis" title="Reference">
     
   
     Reference
@@ -461,6 +486,7 @@
             
               
                 
+  
   
   
   
@@ -493,6 +519,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../api/" class="md-nav__link">
         
@@ -521,6 +548,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../format-grammar/" class="md-nav__link">
         
@@ -545,6 +573,7 @@
             
               
                 
+  
   
   
   
@@ -582,6 +611,7 @@
       
   
   
+  
     
   
   
@@ -607,7 +637,7 @@
             
   
   
-  <span class="md-ellipsis">
+  <span class="md-ellipsis" title="Internals">
     
   
     Internals
@@ -638,6 +668,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../architecture/" class="md-nav__link">
         
@@ -664,13 +695,13 @@
                 
   
   
+  
     
   
   
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
@@ -717,12 +748,14 @@
   
   
   
+  
+    
     
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Troubleshooting
     </label>
     <ul class="md-nav__list" data-md-component="toc">
       
@@ -951,6 +984,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../contributing/" class="md-nav__link">
         
@@ -997,12 +1031,14 @@
   
   
   
+  
+    
     
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Troubleshooting
     </label>
     <ul class="md-nav__list" data-md-component="toc">
       
@@ -1234,9 +1270,9 @@
   
 
 
-<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
+<h1 id="troubleshooting">Troubleshooting<a aria-label="Permanent link" class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
 <p>This page lists the errors you are most likely to see, what causes them, and what to do. Error messages are quoted as the CLI prints them.</p>
-<h2 id="known-limitations-in-the-current-release">Known limitations in the current release<a class="headerlink" href="#known-limitations-in-the-current-release" title="Permanent link">&para;</a></h2>
+<h2 id="known-limitations-in-the-current-release">Known limitations in the current release<a aria-label="Permanent link" class="headerlink" href="#known-limitations-in-the-current-release" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1278,45 +1314,45 @@
 </tr>
 </tbody>
 </table>
-<h2 id="error-messages">Error messages<a class="headerlink" href="#error-messages" title="Permanent link">&para;</a></h2>
-<h3 id="error-input-and-output-are-required"><code>Error: --input and --output are required</code><a class="headerlink" href="#error-input-and-output-are-required" title="Permanent link">&para;</a></h3>
+<h2 id="error-messages">Error messages<a aria-label="Permanent link" class="headerlink" href="#error-messages" title="Permanent link">&para;</a></h2>
+<h3 id="error-input-and-output-are-required"><code>Error: --input and --output are required</code><a aria-label="Permanent link" class="headerlink" href="#error-input-and-output-are-required" title="Permanent link">&para;</a></h3>
 <p>Exit code <code>2</code>. Every <code>convert</code> call, and every format shortcut, needs both flags.</p>
-<h3 id="invalidinput-cannot-infer-format-from-extension-tif"><code>InvalidInput: Cannot infer format from extension '.tif'; ...</code><a class="headerlink" href="#invalidinput-cannot-infer-format-from-extension-tif" title="Permanent link">&para;</a></h3>
+<h3 id="invalidinput-cannot-infer-format-from-extension-tif"><code>InvalidInput: Cannot infer format from extension '.tif'; ...</code><a aria-label="Permanent link" class="headerlink" href="#invalidinput-cannot-infer-format-from-extension-tif" title="Permanent link">&para;</a></h3>
 <p>The format comes from the extension, and only <code>.pdf</code>, <code>.svg</code>, <code>.png</code>, <code>.jpg</code> and <code>.jpeg</code> are known. Rename the file or give an explicit spec with <code>--vinput</code>/<code>--voutput</code>.</p>
-<h3 id="invalidinput-must-specify-explicit-format-specifier-eg-binput-png_d-for-directories"><code>InvalidInput: Must specify explicit format specifier (e.g. --binput png_d) for directories</code><a class="headerlink" href="#invalidinput-must-specify-explicit-format-specifier-eg-binput-png_d-for-directories" title="Permanent link">&para;</a></h3>
+<h3 id="invalidinput-must-specify-explicit-format-specifier-eg-binput-png_d-for-directories"><code>InvalidInput: Must specify explicit format specifier (e.g. --binput png_d) for directories</code><a aria-label="Permanent link" class="headerlink" href="#invalidinput-must-specify-explicit-format-specifier-eg-binput-png_d-for-directories" title="Permanent link">&para;</a></h3>
 <p>A directory input has no extension. Add <code>--vinput pdf_d</code> (or <code>svg_d</code>, <code>png_d</code>, <code>jpg_d</code>) to say which files to collect.</p>
-<h3 id="invalidinput-no-matching-files-found-in"><code>InvalidInput: No matching files found in ...</code><a class="headerlink" href="#invalidinput-no-matching-files-found-in" title="Permanent link">&para;</a></h3>
+<h3 id="invalidinput-no-matching-files-found-in"><code>InvalidInput: No matching files found in ...</code><a aria-label="Permanent link" class="headerlink" href="#invalidinput-no-matching-files-found-in" title="Permanent link">&para;</a></h3>
 <p>The directory has no files with the extension of the input format. Check the format, or add <code>--recursive</code> if the files are in subfolders.</p>
-<h3 id="invalidinput-unknown-hint-xx-expected-one-of"><code>InvalidInput: Unknown hint 'xx'; expected one of [...]</code><a class="headerlink" href="#invalidinput-unknown-hint-xx-expected-one-of" title="Permanent link">&para;</a></h3>
+<h3 id="invalidinput-unknown-hint-xx-expected-one-of"><code>InvalidInput: Unknown hint 'xx'; expected one of [...]</code><a aria-label="Permanent link" class="headerlink" href="#invalidinput-unknown-hint-xx-expected-one-of" title="Permanent link">&para;</a></h3>
 <p>Valid hint codes are <code>ap</code>, <code>ca</code>, <code>gs</code>, <code>mu</code>, <code>pk</code> and <code>re</code>.</p>
-<h3 id="unsupportedconversion-identity-conversion-png-png-is-not-supported"><code>UnsupportedConversion: identity conversion png → png is not supported</code><a class="headerlink" href="#unsupportedconversion-identity-conversion-png-png-is-not-supported" title="Permanent link">&para;</a></h3>
+<h3 id="unsupportedconversion-identity-conversion-png-png-is-not-supported"><code>UnsupportedConversion: identity conversion png → png is not supported</code><a aria-label="Permanent link" class="headerlink" href="#unsupportedconversion-identity-conversion-png-png-is-not-supported" title="Permanent link">&para;</a></h3>
 <p>Same-format conversion exists only for PDF and SVG (normalization).</p>
-<h3 id="unsupportedconversion-no-direct-path-pdf-jpg"><code>UnsupportedConversion: no direct path pdf → jpg</code><a class="headerlink" href="#unsupportedconversion-no-direct-path-pdf-jpg" title="Permanent link">&para;</a></h3>
+<h3 id="unsupportedconversion-no-direct-path-pdf-jpg"><code>UnsupportedConversion: no direct path pdf → jpg</code><a aria-label="Permanent link" class="headerlink" href="#unsupportedconversion-no-direct-path-pdf-jpg" title="Permanent link">&para;</a></h3>
 <p>The planner supports only the pairs listed in <a href="../architecture/#planning">Architecture</a>.</p>
-<h3 id="backendfailure-resvg-svg_to_png-failed-svg_to_png-got-an-unexpected-keyword-argument-dpi"><code>BackendFailure: [resvg] svg_to_png failed: svg_to_png() got an unexpected keyword argument 'dpi'</code><a class="headerlink" href="#backendfailure-resvg-svg_to_png-failed-svg_to_png-got-an-unexpected-keyword-argument-dpi" title="Permanent link">&para;</a></h3>
+<h3 id="backendfailure-resvg-svg_to_png-failed-svg_to_png-got-an-unexpected-keyword-argument-dpi"><code>BackendFailure: [resvg] svg_to_png failed: svg_to_png() got an unexpected keyword argument 'dpi'</code><a aria-label="Permanent link" class="headerlink" href="#backendfailure-resvg-svg_to_png-failed-svg_to_png-got-an-unexpected-keyword-argument-dpi" title="Permanent link">&para;</a></h3>
 <p>An option was passed to a backend that does not accept it. <code>resvg</code> takes <code>width</code>; <code>pymupdf</code> takes <code>dpi</code>. Either change the option or select the other backend with a hint:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vexy-pdfsvgpy<span class="w"> </span>convert<span class="w"> </span>--input<span class="w"> </span>logo.svg<span class="w"> </span>--output<span class="w"> </span>logo.png<span class="w"> </span>--hint<span class="w"> </span>mu
 </code></pre></div>
 <p>From Python, <code>convert(..., hints="mu", dpi=96)</code>.</p>
-<h3 id="backendfailure-no-module-named-ghostscript-or-cairosvg"><code>BackendFailure: ... No module named 'ghostscript'</code> or <code>'cairosvg'</code><a class="headerlink" href="#backendfailure-no-module-named-ghostscript-or-cairosvg" title="Permanent link">&para;</a></h3>
+<h3 id="backendfailure-no-module-named-ghostscript-or-cairosvg"><code>BackendFailure: ... No module named 'ghostscript'</code> or <code>'cairosvg'</code><a aria-label="Permanent link" class="headerlink" href="#backendfailure-no-module-named-ghostscript-or-cairosvg" title="Permanent link">&para;</a></h3>
 <p>The <code>gs</code> or <code>ca</code> hint was used without the extra. Install it:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"vexy-pdfsvgpy[ghostscript]"</span><span class="w">   </span><span class="c1"># or [cairo]</span>
 </code></pre></div>
 <p>These extras also need the Ghostscript or Cairo system library.</p>
-<h3 id="backendfailure-apple-unsupported-on-linux"><code>BackendFailure: [apple] ... unsupported on linux</code><a class="headerlink" href="#backendfailure-apple-unsupported-on-linux" title="Permanent link">&para;</a></h3>
+<h3 id="backendfailure-apple-unsupported-on-linux"><code>BackendFailure: [apple] ... unsupported on linux</code><a aria-label="Permanent link" class="headerlink" href="#backendfailure-apple-unsupported-on-linux" title="Permanent link">&para;</a></h3>
 <p>The <code>ap</code> hint works only on macOS. Remove it on other platforms. A fallback such as <code>--hint ap,mu</code> does not help: the dispatcher picks the backend before it runs, so <code>ap,mu</code> selects Apple on every platform.</p>
-<h2 id="output-looks-wrong">Output looks wrong<a class="headerlink" href="#output-looks-wrong" title="Permanent link">&para;</a></h2>
-<h3 id="text-in-the-svg-uses-the-wrong-font">Text in the SVG uses the wrong font<a class="headerlink" href="#text-in-the-svg-uses-the-wrong-font" title="Permanent link">&para;</a></h3>
+<h2 id="output-looks-wrong">Output looks wrong<a aria-label="Permanent link" class="headerlink" href="#output-looks-wrong" title="Permanent link">&para;</a></h2>
+<h3 id="text-in-the-svg-uses-the-wrong-font">Text in the SVG uses the wrong font<a aria-label="Permanent link" class="headerlink" href="#text-in-the-svg-uses-the-wrong-font" title="Permanent link">&para;</a></h3>
 <p>By default PDF→SVG keeps text as <code>&lt;text&gt;</code> elements that refer to fonts by name. A viewer without those fonts substitutes others. Use <code>--text_as paths</code> to draw glyphs as outlines.</p>
-<h3 id="the-png-from-an-svg-has-an-unexpected-size">The PNG from an SVG has an unexpected size<a class="headerlink" href="#the-png-from-an-svg-has-an-unexpected-size" title="Permanent link">&para;</a></h3>
+<h3 id="the-png-from-an-svg-has-an-unexpected-size">The PNG from an SVG has an unexpected size<a aria-label="Permanent link" class="headerlink" href="#the-png-from-an-svg-has-an-unexpected-size" title="Permanent link">&para;</a></h3>
 <p><code>resvg</code> renders at 2048 pixels wide by default, whatever the SVG's own size. Pass <code>width=</code> from Python, or use <code>--hint mu</code> to render at 300 dpi relative to the SVG's size.</p>
-<h3 id="the-png-from-a-pdf-is-very-large">The PNG from a PDF is very large<a class="headerlink" href="#the-png-from-a-pdf-is-very-large" title="Permanent link">&para;</a></h3>
+<h3 id="the-png-from-a-pdf-is-very-large">The PNG from a PDF is very large<a aria-label="Permanent link" class="headerlink" href="#the-png-from-a-pdf-is-very-large" title="Permanent link">&para;</a></h3>
 <p><code>pymupdf</code> renders at 300 dpi. From Python, pass a lower <code>dpi</code>, for example <code>dpi=96</code>.</p>
-<h2 id="get-debug-output">Get debug output<a class="headerlink" href="#get-debug-output" title="Permanent link">&para;</a></h2>
+<h2 id="get-debug-output">Get debug output<a aria-label="Permanent link" class="headerlink" href="#get-debug-output" title="Permanent link">&para;</a></h2>
 <p><code>--verbose</code> sets the log level to <code>DEBUG</code>, but in the current release the CLI sends log messages to a sink that discards them, so the flag adds no output. For a full Python traceback, call the API directly:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from vexy_pdfsvgpy import convert; convert(input='in.pdf', output='out.png')"</span>
 </code></pre></div>
-<h2 id="report-a-problem">Report a problem<a class="headerlink" href="#report-a-problem" title="Permanent link">&para;</a></h2>
+<h2 id="report-a-problem">Report a problem<a aria-label="Permanent link" class="headerlink" href="#report-a-problem" title="Permanent link">&para;</a></h2>
 <p>Open an issue at <a href="https://github.com/vexyart/vexy-pdfsvgpy/issues">https://github.com/vexyart/vexy-pdfsvgpy/issues</a> with the command, the full error, the output of <code>vexy-pdfsvgpy version</code>, your Python version and your operating system.</p>
 
 
@@ -1362,41 +1398,28 @@
 </div>
       </main>
       
+  
         <footer class="md-footer">
   
     
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
           <a href="../architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Architecture">
-            <div class="md-footer__button md-icon">
-              
+            <div class="md-footer__button md-icon fly-arrow fly-arrow--back" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
             <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Architecture
-              </div>
+              <div class="md-ellipsis">Architecture</div>
             </div>
           </a>
         
         
-          
           <a href="../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing">
             <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Contributing
-              </div>
+              <div class="md-ellipsis">Contributing</div>
             </div>
-            <div class="md-footer__button md-icon">
-              
+            <div class="md-footer__button md-icon fly-arrow fly-arrow--forward" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
             </div>
           </a>
@@ -1404,22 +1427,10 @@
       </nav>
     
   
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
   
-  
-    Made with
-    <a href="https://jaywhj.github.io/mkdocs-materialx/" target="_blank" rel="noopener">
-      MaterialX
-    </a>
-  
-</div>
-      
-    </div>
-  </div>
 </footer>
       
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
@@ -1432,8 +1443,12 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "code": null, "features": ["navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "code.collapse": "Collapse", "code.download": "Download", "code.expand": "Expand remaining # lines", "code.select": "Toggle line selection", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
+  
       <script src="../assets/javascripts/bundle.fc193f93.min.js"></script>
       
     
+  <script src="../assets/fly/fly-bridge.js?v=86c9984233"></script>
+  <script type="module" src="../assets/fly/fly.js?v=f51ac22526"></script>
+
   </body>
 </html>

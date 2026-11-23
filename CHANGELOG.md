@@ -4,6 +4,10 @@ this_file: CHANGELOG.md
 
 # Changelog
 
+## Unreleased
+
+- Site now uses the fly-january 0.1.1 theme (chrome: none).
+
 ## Modernization pass (2026-07-05)
 
 - **CI/CD:** added `.github/workflows/ci.yml` (uv-based lint + strict mypy + pytest matrix on Ubuntu/macOS, Python 3.12/3.13, coverage) and `release.yml` (build + PyPI trusted publishing on `v*` tags).

@@ -66,7 +66,7 @@ Run one with `uv run examples/trace_logo.py`.
 
 ## Documentation
 
-The documentation source is in `src_docs/md/`, and the site configuration is `src_docs/mkdocs.yml`. [ProperDocs](https://pypi.org/project/properdocs/) with the MaterialX theme builds it into `docs/`, which GitHub Pages serves at <https://vexy.dev/vexy-pdfsvgpy/>.
+The documentation source is in `src_docs/md/`, and the site configuration is `src_docs/mkdocs.yml`. The build script uses Python 3.13, ProperDocs and the fly-january 0.1.1 theme with `chrome: none`. GitHub Pages serves the generated `docs/` at <https://vexy.dev/vexy-pdfsvgpy/>.
 
 ```bash
 src_docs/build.sh          # strict build into docs/
