@@ -14,7 +14,7 @@ uv run pytest -q --cov=vexy_pdfsvgpy
 
 All four must pass before you claim a change is done. Tests read committed fixtures from `tests/fixtures/` — regenerate with `uv run python tests/fixtures/_generate.py`.
 
-For site changes, run `./build.sh docs` and include the regenerated `docs/` output. The strict ProperDocs build uses `src_docs/mkdocs.yml` and fly-january 0.3.0 or later with `extra.fly.chrome: none`.
+For site changes, run `./build.sh docs` and include the regenerated `docs/` output. The strict ProperDocs build uses `src_docs/mkdocs.yml` and fly-january 0.4.0 or later (remote theme assets) with `extra.fly.chrome: none`.
 
 ## Rules
 

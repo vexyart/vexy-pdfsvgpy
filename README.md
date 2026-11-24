@@ -14,7 +14,7 @@ Unified Python API and CLI for PDF ⇄ SVG ⇄ PNG/JPG conversion — pure-pip, 
 
 **Documentation:** https://vexy.dev/vexy-pdfsvgpy/
 
-Run `./build.sh docs` to rebuild `docs/` with ProperDocs and fly-january 0.3.0 or later. The build uses Python 3.13 and runs in strict mode.
+Run `./build.sh docs` to rebuild `docs/` with ProperDocs and fly-january 0.4.0 or later (remote theme assets). The build uses Python 3.13 and runs in strict mode.
 
 ## Install
 
