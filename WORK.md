@@ -6,7 +6,7 @@ this_file: WORK.md
 
 ## Documentation theme
 
-- `./build.sh docs` built the fly-january 0.1.1 site in strict mode with zero warnings. All 11 generated HTML pages use unbranded chrome and the stock MaterialX favicon. The search index covers all 10 documentation pages.
+- `./build.sh docs` built the fly-january 0.2.1 site in strict mode with zero warnings. All 11 generated HTML pages use unbranded chrome and the stock MaterialX favicon. The search index covers all 10 documentation pages.
 - `uv run pytest -q --cov=vexy_pdfsvgpy` passed all 219 tests with 82% coverage and seven existing deprecation warnings. Ruff lint, formatting and strict mypy checks passed.
 
 ## Phase 8 — Examples and documentation (complete, 2026-04-14)
