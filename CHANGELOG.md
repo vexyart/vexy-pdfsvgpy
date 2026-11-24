@@ -6,6 +6,8 @@ this_file: CHANGELOG.md
 
 ## Unreleased
 
+- Documentation builds use fly-january 0.3.0 or later.
+
 - Local releases hand off to GitHub Actions for PyPI Trusted Publishing. The owner must configure the PyPI project or pending publisher for `vexyart/vexy-pdfsvgpy`, workflow `release.yml`, environment `pypi`.
 
 - Site now uses the fly-january 0.2.1 theme (chrome: none).

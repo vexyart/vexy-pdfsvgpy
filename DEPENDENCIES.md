@@ -33,7 +33,7 @@ this_file: DEPENDENCIES.md
 
 ## Documentation
 
-`src_docs/build.sh` installs ProperDocs and the fly-january 0.2.1 theme in an isolated `uvx` environment.
+`src_docs/build.sh` installs ProperDocs and fly-january 0.3.0 or later in an isolated `uvx` environment.
 
 ## Forbidden / rejected
 

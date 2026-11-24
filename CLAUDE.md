@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-Implemented and modernized. `src/vexy_pdfsvgpy/` holds the full package (backends, dispatch, pipeline, operations, Fire CLI); `tests/` has 219 passing tests at ~82% coverage; ruff and strict mypy are clean; CI (`.github/workflows/ci.yml`) and PyPI trusted-publish release (`release.yml`) are wired. Run `./build.sh docs` to build the ProperDocs site from `src_docs/` into `docs/` with fly-january 0.2.1.
+Implemented and modernized. `src/vexy_pdfsvgpy/` holds the full package (backends, dispatch, pipeline, operations, Fire CLI); `tests/` has 219 passing tests at ~82% coverage; ruff and strict mypy are clean; CI (`.github/workflows/ci.yml`) and PyPI trusted-publish release (`release.yml`) are wired. Run `./build.sh docs` to build the ProperDocs site from `src_docs/` into `docs/` with fly-january 0.3.0 or later.
 
 Tests read small committed fixtures from `tests/fixtures/` (regenerate with `uv run python tests/fixtures/_generate.py`). The large real-world samples in `testdata/` remain gitignored and are not required to run the suite. Use `uv run pytest -q` and inspect installed backend source under `.venv/lib/python3.12/site-packages/` when verifying behavior.
 
