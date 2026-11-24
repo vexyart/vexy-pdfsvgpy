@@ -87,9 +87,8 @@ The version comes from the git tag through `hatch-vcs`. The build writes it into
 
 ## Release
 
-Releases are tagged `vX.Y.Z`. Two paths publish to PyPI:
+Run `./publish.sh` to commit pending changes, tag the next version and push with `gitnextver`. Pushing a `v*` tag starts the GitHub Actions `Release` workflow.
 
-- `./publish.sh` runs `gitnextver`, which commits pending changes, tags the next version and pushes. It then builds from the tag and uploads with `uv publish`. It needs a PyPI credential such as `UV_PUBLISH_TOKEN`.
-- The `Release` workflow (`.github/workflows/release.yml`) runs on every pushed `v*` tag. It builds the sdist and wheel, checks them with `twine`, and uploads with PyPI trusted publishing. It skips files that are already on PyPI, so it does not fail after `publish.sh` has uploaded the same version.
+The workflow builds the sdist and wheel from the tag, checks both with Twine, and uploads them through PyPI Trusted Publishing. Configure the PyPI project’s trusted publisher for `vexyart/vexy-pdfsvgpy`, workflow `release.yml`, environment `pypi`. Check the workflow result to confirm publication.
 
 Record changes in `CHANGELOG.md`.

@@ -6,9 +6,19 @@ this_file: CHANGELOG.md
 
 ## Unreleased
 
+- Local releases hand off to GitHub Actions for PyPI Trusted Publishing. The owner must configure the PyPI project or pending publisher for `vexyart/vexy-pdfsvgpy`, workflow `release.yml`, environment `pypi`.
+
 - Site now uses the fly-january 0.2.1 theme (chrome: none).
 
 ## Modernization pass (2026-07-05)
+
+- Split generates per-page filenames beside the input when the output directory is omitted (`5543b90`, three-page fixture check).
+- Merge generates its output path when omitted (`5543b90`, reopened the three-page result with pikepdf).
+- The `png_s` CLI shortcut converts SVG to PNG (`test_format_shortcut_method` checks the output signature).
+- The full fixture suite passed (219 tests recorded in `WORK.md` at `f46c20f`).
+- Ruff lint passed on source and tests (`uv run ruff check src tests`, verified at `f46c20f`).
+- Ruff formatting passed on source and tests (`uv run ruff format --check src tests`, verified at `f46c20f`).
+- Strict mypy passed on the package (`uv run mypy src/vexy_pdfsvgpy`, verified at `f46c20f`).
 
 - **CI/CD:** added `.github/workflows/ci.yml` (uv-based lint + strict mypy + pytest matrix on Ubuntu/macOS, Python 3.12/3.13, coverage) and `release.yml` (build + PyPI trusted publishing on `v*` tags).
 - **Tests are now self-contained:** added committed `tests/fixtures/` (tiny synthetic PDFs + small SVGs) and a `_generate.py` regenerator; repointed all test data references off the gitignored `testdata/`. The suite runs anywhere, including CI.

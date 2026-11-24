@@ -1104,11 +1104,8 @@
 </code></pre></div>
 <p>The version comes from the git tag through <code>hatch-vcs</code>. The build writes it into <code>src/vexy_pdfsvgpy/_version.py</code>, which is not tracked.</p>
 <h2 id="release">Release<a aria-label="Permanent link" class="headerlink" href="#release" title="Permanent link">&para;</a></h2>
-<p>Releases are tagged <code>vX.Y.Z</code>. Two paths publish to PyPI:</p>
-<ul>
-<li><code>./publish.sh</code> runs <code>gitnextver</code>, which commits pending changes, tags the next version and pushes. It then builds from the tag and uploads with <code>uv publish</code>. It needs a PyPI credential such as <code>UV_PUBLISH_TOKEN</code>.</li>
-<li>The <code>Release</code> workflow (<code>.github/workflows/release.yml</code>) runs on every pushed <code>v*</code> tag. It builds the sdist and wheel, checks them with <code>twine</code>, and uploads with PyPI trusted publishing. It skips files that are already on PyPI, so it does not fail after <code>publish.sh</code> has uploaded the same version.</li>
-</ul>
+<p>Run <code>./publish.sh</code> to commit pending changes, tag the next version and push with <code>gitnextver</code>. Pushing a <code>v*</code> tag starts the GitHub Actions <code>Release</code> workflow.</p>
+<p>The workflow builds the sdist and wheel from the tag, checks both with Twine, and uploads them through PyPI Trusted Publishing. Configure the PyPI project’s trusted publisher for <code>vexyart/vexy-pdfsvgpy</code>, workflow <code>release.yml</code>, environment <code>pypi</code>. Check the workflow result to confirm publication.</p>
 <p>Record changes in <code>CHANGELOG.md</code>.</p>
 
 
